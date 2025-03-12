@@ -18,61 +18,30 @@ export default function ImageCollection() {
       if (imageRef) {
         gsap.fromTo(
           imageRef,
-          { y: 300, opacity: 0, x: -600 },
+          { x: -100, y: 100, opacity: 0 },
           {
+            x: 0,
             y: 0,
             opacity: 1,
-            x: 0,
-            scale: 1,
-            ease: "power4.out",
-            delay: 0.2,
+            ease: "none",
             scrollTrigger: {
               trigger: imageRef,
               start: "top 80%",
-              end: "top 50%",
-              toggleActions: "play none none reverse",
+              end: "top 30%",
+              scrub: 1,
               markers: true,
-              scrub: false,
             },
           }
         );
-      }
-    });
-  }, []);
 
-  useEffect(() => {
-    imageRefs.current.forEach((imageRef) => {
-      if (imageRef) {
-        const image = imageRef.querySelector("img");
-
-        imageRef.addEventListener("mouseenter", () => {
-          gsap.to(image, {
-            scale: 1.1,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-
-          gsap.to(imageRef.querySelector(".ghost"), {
-            opacity: 1,
-            scale: 1.15,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        });
-
-        imageRef.addEventListener("mouseleave", () => {
-          gsap.to(image, {
-            scale: 1,
-            duration: 0.3,
-            ease: "power2.in",
-          });
-
-          gsap.to(imageRef.querySelector(".ghost"), {
-            opacity: 0,
-            scale: 1,
-            duration: 0.3,
-            ease: "power2.in",
-          });
+        gsap.to(imageRef, {
+          y: -50,
+          scrollTrigger: {
+            trigger: imageRef,
+            start: "top 100%",
+            end: "bottom top",
+            scrub: 1,
+          },
         });
       }
     });
@@ -86,18 +55,8 @@ export default function ImageCollection() {
           ref={(el) => {
             imageRefs.current[index] = el;
           }}
-          className="relative group w-[400px] h-[250px]"
+          className="relative group w-[400px] h-[250px] overflow-hidden"
         >
-          <div className="absolute top-0 left-0 w-full h-full opacity-0 ghost">
-            <Image
-              src={imgSrc}
-              alt={`Image ${index + 1}`}
-              width={400}
-              height={250}
-              className="w-full h-full object-cover rounded-lg shadow-xl blur-lg opacity-50"
-            />
-          </div>
-
           <Image
             src={imgSrc}
             alt={`Image ${index + 1}`}

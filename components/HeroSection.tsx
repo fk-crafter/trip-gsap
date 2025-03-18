@@ -36,7 +36,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
-        src="/travel-background.mp4"
+        src="/bg.mp4"
       />
       <div className="absolute inset-0  bg-opacity-40 z-1" />
 

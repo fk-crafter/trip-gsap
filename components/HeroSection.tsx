@@ -4,9 +4,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function HeroSection() {
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     gsap.fromTo(
@@ -23,34 +23,46 @@ export default function HeroSection() {
 
     gsap.fromTo(
       buttonRef.current,
-      { opacity: 0, scale: 0.8 },
+      { opacity: 0, scale: 0.95 },
       { opacity: 1, scale: 1, duration: 1.2, ease: "power4.out", delay: 0.5 }
     );
   }, []);
 
   return (
-    <section className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-gradient-to-b from-[#0f0f0f] to-[#1c1c1e] px-6">
-      <h1
-        ref={titleRef}
-        className="text-6xl md:text-7xl font-extrabold uppercase tracking-wide bg-gradient-to-r from-gray-100 to-gray-400 text-transparent bg-clip-text drop-shadow-lg"
-      >
-        Unforgettable Journeys
-      </h1>
+    <section className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-black overflow-hidden">
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        autoPlay
+        loop
+        muted
+        playsInline
+        src="/travel-background.mp4"
+      />
+      <div className="absolute inset-0  bg-opacity-40 z-1" />
 
-      <p
-        ref={subtitleRef}
-        className="mt-4 text-lg md:text-xl text-gray-400 max-w-2xl drop-shadow-md"
-      >
-        Experience the world&apos;s most breathtaking destinations, wrapped in
-        luxury and adventure.
-      </p>
+      <div className="relative z-10 px-6">
+        <h1
+          ref={titleRef}
+          className="text-5xl md:text-7xl font-extrabold uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]"
+        >
+          Explore The World
+        </h1>
 
-      <button
-        ref={buttonRef}
-        className="mt-6 px-8 py-4 bg-gray-800 text-gray-300 font-bold text-lg rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-gray-700 hover:text-white"
-      >
-        Explore Now
-      </button>
+        <p
+          ref={subtitleRef}
+          className="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+        >
+          Discover breathtaking landscapes, immerse yourself in diverse
+          cultures, and create unforgettable memories.
+        </p>
+
+        <button
+          ref={buttonRef}
+          className="mt-6 px-8 py-4 cursor-pointer bg-gradient-to-r from-blue-600 to-blue-400 text-white font-bold text-lg rounded-full shadow-md transition-transform duration-200 ease-out hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:shadow-lg hover:translate-y-[-2px] active:scale-95"
+        >
+          Start Your Journey
+        </button>
+      </div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -13,38 +13,41 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ImageCollection() {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    imageRefs.current.forEach((imageRef) => {
-      if (imageRef) {
-        gsap.fromTo(
-          imageRef,
-          { x: -100, y: 100, opacity: 0 },
-          {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: imageRef,
-              start: "top 80%",
-              end: "top 30%",
-              scrub: 1,
-              markers: true,
-            },
-          }
-        );
+  const setRefs = useCallback((el: HTMLDivElement | null, index: number) => {
+    if (el) {
+      imageRefs.current[index] = el;
+    }
+  }, []);
 
-        gsap.to(imageRef, {
-          y: -50,
+  useEffect(() => {
+    const elements = imageRefs.current.filter(
+      (el) => el !== null
+    ) as HTMLDivElement[];
+
+    elements.forEach((imageRef) => {
+      gsap.fromTo(
+        imageRef,
+        { x: -100, y: 100, opacity: 0 },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          duration: 1.2,
+          overwrite: "auto",
           scrollTrigger: {
             trigger: imageRef,
-            start: "top 100%",
-            end: "bottom top",
-            scrub: 1,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: true,
           },
-        });
-      }
+        }
+      );
     });
+
+    return () => {
+      elements.forEach((el) => ScrollTrigger.getById(el?.id)?.kill());
+    };
   }, []);
 
   return (
@@ -52,9 +55,7 @@ export default function ImageCollection() {
       {[Image1, Image2, Image3].map((imgSrc, index) => (
         <div
           key={index}
-          ref={(el) => {
-            imageRefs.current[index] = el;
-          }}
+          ref={(el) => setRefs(el, index)}
           className="relative group w-[400px] h-[250px] overflow-hidden"
         >
           <Image

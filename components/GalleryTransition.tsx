@@ -1,0 +1,38 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function GalleryTransition() {
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      overlayRef.current,
+      { height: 0, width: "40%", left: "30%" }, // 👈 centré et petit
+      {
+        height: "100vh",
+        width: "100%",
+        left: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: overlayRef.current,
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
+  return (
+    <div
+      ref={overlayRef}
+      className="w-full bg-white fixed bottom-0 left-0 z-20 pointer-events-none"
+    />
+  );
+}

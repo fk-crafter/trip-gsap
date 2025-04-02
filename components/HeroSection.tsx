@@ -1,19 +1,32 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function HeroSection() {
+  const heroContainerRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const buttonRef = useRef(null);
 
-  useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: -50 },
-      { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }
-    );
+  useGSAP(() => {
+    gsap.to(heroContainerRef.current, {
+      scrollTrigger: {
+        trigger: heroContainerRef.current,
+        start: "top top",
+        end: "+=1000",
+        scrub: true,
+        pin: true,
+      },
+    });
+
+    gsap.from(titleRef.current, {
+      opacity: 1,
+      y: 500,
+      duration: 1.2,
+      ease: "power4.out",
+    });
 
     gsap.fromTo(
       subtitleRef.current,
@@ -24,12 +37,15 @@ export default function HeroSection() {
     gsap.fromTo(
       buttonRef.current,
       { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 1.2, ease: "power4.out", delay: 0.5 }
+      { opacity: 1, scale: 1, duration: 1.2, ease: "power4.out", delay: 0.3 }
     );
   }, []);
 
   return (
-    <section className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-black overflow-hidden">
+    <section
+      ref={heroContainerRef}
+      className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-black overflow-hidden"
+    >
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay

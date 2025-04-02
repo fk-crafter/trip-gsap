@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+  padding-bottom: 100vh;
+}
+
 .image-card {
   clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 }

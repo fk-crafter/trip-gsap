@@ -13,12 +13,13 @@ export default function GalleryTransition() {
   useGSAP(() => {
     gsap.fromTo(
       overlayRef.current,
-      { height: 0, width: "40%", left: "30%" }, // 👈 centré et petit
+      { height: 0, width: "40%", left: "30%" },
       {
         height: "100vh",
         width: "100%",
         left: 0,
         ease: "none",
+        delay: 0.5,
         scrollTrigger: {
           trigger: overlayRef.current,
           start: "top bottom",

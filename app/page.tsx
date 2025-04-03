@@ -1,4 +1,3 @@
-// app/page.tsx
 import HeroSection from "@/components/HeroSection";
 import SectionTransition from "@/components/SectionTransition";
 import Gallery from "@/components/Gallery";

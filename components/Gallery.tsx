@@ -49,8 +49,11 @@ export default function Gallery() {
         opacity: 1,
         y: 0,
         ease: "power4.out",
+        duration: 1.2,
         scrollTrigger: {
           trigger: textRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
         },
       }
     );

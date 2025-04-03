@@ -18,7 +18,6 @@ export default function LenisProvider() {
 
     requestAnimationFrame(raf);
 
-    // connect à GSAP ScrollTrigger
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });

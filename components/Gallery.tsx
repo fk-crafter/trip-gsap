@@ -5,13 +5,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+
 import Image1 from "@/public/image1.avif";
 import Image2 from "@/public/image2.avif";
 import Image3 from "@/public/image3.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ImageCollection() {
+export default function Gallery() {
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
   const setRef = (el: HTMLImageElement | null, index: number) => {
     if (el) imageRefs.current[index] = el;
@@ -40,7 +41,7 @@ export default function ImageCollection() {
   }, []);
 
   return (
-    <div className="pt-72 flex flex-col items-center justify-center min-h-screen gap-20">
+    <section className="min-h-[200vh] pt-72 relative z-50 flex flex-col items-center justify-center gap-20">
       {[Image1, Image2, Image3].map((img, index) => (
         <div key={index} className="relative group w-fit">
           <Image
@@ -56,6 +57,6 @@ export default function ImageCollection() {
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 }

@@ -7,7 +7,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function GalleryTransition() {
+export default function SectionTransition() {
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {

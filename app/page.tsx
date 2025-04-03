@@ -1,15 +1,18 @@
-import GallerySection from "@/components/GallerySection";
-import GalleryTransition from "@/components/GalleryTransition";
+// app/page.tsx
 import HeroSection from "@/components/HeroSection";
+import SectionTransition from "@/components/SectionTransition";
+import Gallery from "@/components/Gallery";
 import LenisProvider from "@/components/LenisProvider";
+import StorySection from "@/components/StorySection";
 
 export default function Home() {
   return (
-    <div className="h-[300vh] flex flex-col text-gray-200">
+    <div className="flex flex-col text-gray-200">
       <HeroSection />
-      <GalleryTransition />
+      <SectionTransition />
       <LenisProvider />
-      <GallerySection />
+      <Gallery />
+      <StorySection />
     </div>
   );
 }

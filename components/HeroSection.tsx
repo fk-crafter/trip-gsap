@@ -54,8 +54,7 @@ export default function HeroSection() {
         playsInline
         src="/bg.mp4"
       />
-      <div className="absolute inset-0  bg-opacity-40 z-1" />
-
+      <div className="absolute inset-0 bg-opacity-40 z-1" />
       <div className="relative z-10 px-6">
         <h1
           ref={titleRef}
@@ -63,7 +62,6 @@ export default function HeroSection() {
         >
           Explore The World
         </h1>
-
         <p
           ref={subtitleRef}
           className="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
@@ -71,7 +69,6 @@ export default function HeroSection() {
           Discover breathtaking landscapes, immerse yourself in diverse
           cultures, and create unforgettable memories.
         </p>
-
         <button
           ref={buttonRef}
           className="mt-6 px-8 py-4 cursor-pointer bg-gradient-to-r from-blue-600 to-blue-400 text-white font-bold text-lg rounded-full shadow-md transition-transform duration-200 ease-out hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:shadow-lg hover:translate-y-[-2px] active:scale-95"

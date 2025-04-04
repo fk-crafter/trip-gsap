@@ -3,6 +3,7 @@ import SectionTransition from "@/components/SectionTransition";
 import Gallery from "@/components/Gallery";
 import LenisProvider from "@/components/LenisProvider";
 import StorySection from "@/components/StorySection";
+import FeaturedDestinations from "@/components/FeaturedDestinations";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <LenisProvider />
       <Gallery />
       <StorySection />
+      <FeaturedDestinations />
     </div>
   );
 }

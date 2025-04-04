@@ -76,7 +76,7 @@ export default function FeaturedDestinations() {
         className="flex space-x-32 h-full items-center px-32 pr-[500px]"
       >
         {destinations.map((dest, index) => (
-          <div key={index} className="flex-shrink-0">
+          <div key={index} className="flex-shrink-0 group relative">
             <Image
               src={dest.image}
               alt={dest.title}
@@ -84,6 +84,10 @@ export default function FeaturedDestinations() {
               height={600}
               className="floating-image rounded-3xl shadow-2xl object-cover transition-transform duration-500"
             />
+
+            <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-10px] transition-all duration-300">
+              <p className="text-white text-lg font-semibold">{dest.title}</p>
+            </div>
           </div>
         ))}
       </div>

@@ -61,7 +61,7 @@ export default function StorySection() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: leftRef.current,
-          start: "top 30%",
+          start: "top 70%",
           toggleActions: "play none none reverse",
         },
       }
@@ -91,7 +91,7 @@ export default function StorySection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full z-50 py-12 px-4 text-black overflow-hidden"
+      className="w-full z-50 py-12 pt-52 px-4 text-black overflow-hidden"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start min-h-[140vh]">
         <div ref={leftRef} className="relative">

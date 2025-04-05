@@ -36,7 +36,7 @@ export default function GalleryTitle() {
         ease: "power2.out",
         scrollTrigger: {
           trigger: textRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "top 40%",
           scrub: true,
         },
@@ -54,6 +54,10 @@ export default function GalleryTitle() {
         <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wider text-black">
           The World Through Your Eyes
         </h2>
+        <p className="text-gray-400">
+          Traveling is more than just visiting places — it&apos;s a powerful way
+          to grow as a person.
+        </p>
       </div>
     </div>
   );

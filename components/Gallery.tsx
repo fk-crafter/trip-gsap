@@ -18,6 +18,8 @@ export default function Gallery() {
     if (el) imageRefs.current[index] = el;
   };
 
+  const hoverTexts = ["Breathe", "Move", "Connect"];
+
   useGSAP(() => {
     imageRefs.current.forEach((img) => {
       gsap.fromTo(
@@ -53,7 +55,7 @@ export default function Gallery() {
             className="z-10"
           />
           <div className="absolute left-[-220px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-800 bg-white p-4 rounded shadow-lg pointer-events-none">
-            <p>text {index + 1}</p>
+            <p>{hoverTexts[index]}</p>
           </div>
         </div>
       ))}

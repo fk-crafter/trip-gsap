@@ -9,10 +9,10 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const destinations = [
-  { title: "Kyoto", image: "/image3.jpg" },
-  { title: "Swiss Alps", image: "/image3.jpg" },
-  { title: "Black Forest", image: "/image3.jpg" },
-  { title: "Banff", image: "/image3.jpg" },
+  { title: "Kyoto", image: "/kyoto.jpg" },
+  { title: "Swiss Alps", image: "/swiss-alps.jpg" },
+  { title: "Black Forest", image: "/black-forest.jpg" },
+  { title: "Banff", image: "/banff.jpg" },
 ];
 
 export default function NatureSection() {

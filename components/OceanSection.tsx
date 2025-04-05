@@ -9,10 +9,10 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const destinations = [
-  { title: "Maldives", image: "/image3.jpg" },
-  { title: "Bora Bora", image: "/image3.jpg" },
-  { title: "Tulum", image: "/image3.jpg" },
-  { title: "Bali", image: "/image3.jpg" },
+  { title: "Maldives", image: "/maldive.jpg" },
+  { title: "Bora Bora", image: "/bora-bora.jpg" },
+  { title: "Tulum", image: "/tulum.jpg" },
+  { title: "Bali", image: "/bali.jpg" },
 ];
 
 export default function OceanSection() {

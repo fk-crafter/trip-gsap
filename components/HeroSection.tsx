@@ -47,7 +47,7 @@ export default function HeroSection() {
       className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-black overflow-hidden"
     >
       <video
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className=" absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         loop
         muted

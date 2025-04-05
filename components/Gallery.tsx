@@ -18,9 +18,6 @@ export default function Gallery() {
     if (el) imageRefs.current[index] = el;
   };
 
-  const textRef = useRef(null);
-  const grainRef = useRef<HTMLDivElement | null>(null);
-
   useGSAP(() => {
     imageRefs.current.forEach((img) => {
       gsap.fromTo(
@@ -41,52 +38,10 @@ export default function Gallery() {
         }
       );
     });
-
-    gsap.fromTo(
-      textRef.current,
-      { opacity: 0, y: 100 },
-      {
-        opacity: 1,
-        y: 0,
-        ease: "power4.out",
-        duration: 1.2,
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      grainRef.current,
-      { opacity: 0 },
-      {
-        opacity: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%",
-          end: "top 40%",
-          scrub: true,
-        },
-      }
-    );
   }, []);
 
   return (
-    <section className="min-h-[200vh] pt-72 relative z-50 flex flex-col items-center justify-center gap-20 text-black overflow-hidden">
-      <div
-        ref={grainRef}
-        className="absolute inset-0 pointer-events-none z-0 opacity-0 bg-[url('/grain.png')] bg-cover"
-      />
-
-      <div ref={textRef} className="mb-20 text-center relative z-10">
-        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wider">
-          The World Through Your Eyes
-        </h2>
-      </div>
-
+    <section className="min-h-[250vh] pt-72 relative z-50 flex flex-col items-center justify-center gap-20 text-black overflow-hidden">
       {[Image1, Image2, Image3].map((img, index) => (
         <div key={index} className="relative group w-fit z-10">
           <Image

@@ -45,6 +45,9 @@ export default function PlaneRevealSection() {
     <section
       ref={sectionRef}
       className="z-50 relative w-full h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        background: "linear-gradient(to bottom, #dbeafe, #ffffff)", // sky blue to white
+      }}
     >
       <Image
         ref={planeRef}

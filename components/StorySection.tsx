@@ -106,7 +106,7 @@ export default function StorySection() {
           </div>
         </div>
 
-        <div ref={rightRef} className="relative h-[80vh] overflow-hidden">
+        <div ref={rightRef} className="relative h-[280vh] overflow-hidden">
           <div ref={scrollableRef} className="space-y-48">
             {[
               {
@@ -120,6 +120,22 @@ export default function StorySection() {
               {
                 title: "3. Creates Memories",
                 text: "The experiences you gain while traveling often become the most cherished memories of your life.",
+              },
+              {
+                title: "4. Sparks Creativity",
+                text: "New places and experiences can fuel your imagination and inspire fresh ideas in unexpected ways.",
+              },
+              {
+                title: "5. Connects You With Locals",
+                text: "Sharing everyday moments with people from different backgrounds helps you feel the heartbeat of a place beyond tourism.",
+              },
+              {
+                title: "6. Breaks Routine",
+                text: "Stepping out of your daily patterns refreshes your mind and resets your perspective on life.",
+              },
+              {
+                title: "7. Connects You With History",
+                text: "Every place has a story — walking through ancient streets or visiting historical landmarks helps you feel the weight of time and culture.",
               },
             ].map((item, index) => (
               <div

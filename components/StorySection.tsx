@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,7 +14,7 @@ export default function StorySection() {
   const scrollableRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<HTMLDivElement[]>([]);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (
       !sectionRef.current ||
       !leftRef.current ||

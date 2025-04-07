@@ -10,10 +10,11 @@ import CitySection from "@/components/CitySection";
 import DesertSection from "@/components/DesertSection";
 import PlaneRevealSection from "@/components/PlaneRevealSection";
 import FlightIntro from "@/components/FlightIntro";
+import ChoiceSection from "@/components/ChoiceSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col text-gray-200">
+    <div className="flex flex-col">
       <HeroSection />
       <SectionTransition />
       <LenisProvider />
@@ -21,12 +22,12 @@ export default function Home() {
       <GalleryTitle />
       <StorySection />
       <FlightIntro />
-
       <PlaneRevealSection />
       <NatureSection />
       <OceanSection />
       <CitySection />
       <DesertSection />
+      <ChoiceSection />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function FlightIntro() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
@@ -49,7 +50,7 @@ export default function FlightIntro() {
         Fasten your seatbelts.
       </h2>
       <p className="animate-item text-lg md:text-xl text-gray-600 max-w-xl">
-        We're about to discover the world.
+        Were about to discover the world.
       </p>
     </section>
   );

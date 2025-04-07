@@ -9,6 +9,7 @@ import OceanSection from "@/components/OceanSection";
 import CitySection from "@/components/CitySection";
 import DesertSection from "@/components/DesertSection";
 import PlaneRevealSection from "@/components/PlaneRevealSection";
+import FlightIntro from "@/components/FlightIntro";
 
 export default function Home() {
   return (
@@ -19,11 +20,13 @@ export default function Home() {
       <Gallery />
       <GalleryTitle />
       <StorySection />
+      <FlightIntro />
+
+      <PlaneRevealSection />
       <NatureSection />
       <OceanSection />
       <CitySection />
       <DesertSection />
-      <PlaneRevealSection />
     </div>
   );
 }

@@ -58,15 +58,13 @@ export default function PlaneRevealSection() {
       >
         <Image
           ref={planeRef}
-          src="/plane2.png"
+          src="/plane.png"
           alt="Flying Plane"
           width={800}
           height={800}
           className="object-contain"
         />
       </section>
-
-      <section className="w-full h-[100vh] bg-white flex items-center justify-center"></section>
     </>
   );
 }

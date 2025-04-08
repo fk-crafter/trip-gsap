@@ -12,6 +12,7 @@ import PlaneRevealSection from "@/components/PlaneRevealSection";
 import FlightIntro from "@/components/FlightIntro";
 import ChoiceSection from "@/components/ChoiceSection";
 import WorldMap from "@/components/WorldMap";
+import MapRevealSection from "@/components/MapRevealSection";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <CitySection />
       <DesertSection />
       <ChoiceSection />
+      <MapRevealSection />
       <WorldMap />
     </div>
   );

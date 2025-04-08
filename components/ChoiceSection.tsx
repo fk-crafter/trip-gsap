@@ -39,11 +39,10 @@ export default function ChoiceSection() {
       className="w-full z-50 min-h-[100vh] bg-[#f7f7f7] text-gray-900 flex flex-col items-center justify-center text-center px-6"
     >
       <h2 className="animate-narrative text-4xl md:text-5xl font-semibold mb-6">
-        Can’t decide where to go?
+        Ready to plan your adventure?
       </h2>
       <p className="animate-narrative text-lg md:text-xl max-w-2xl text-gray-700">
-        It’s cool. A cool map is coming soon to help you find your kind of
-        adventure.
+        A map is here to guide you — pick your vibe and start exploring.
       </p>
     </section>
   );

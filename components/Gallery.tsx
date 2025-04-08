@@ -52,9 +52,9 @@ export default function Gallery() {
             alt={`Image ${index + 1}`}
             width={500}
             height={500}
-            className="z-10"
+            className="z-10 rounded-3xl shadow-xl object-cover"
           />
-          <div className="absolute left-[-220px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-800 bg-white p-4 rounded shadow-lg pointer-events-none">
+          <div className="absolute left-[-220px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-800 bg-white/90 backdrop-blur-sm p-4 rounded shadow-lg pointer-events-none">
             <p>{hoverTexts[index]}</p>
           </div>
         </div>

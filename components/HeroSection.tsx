@@ -9,6 +9,7 @@ export default function HeroSection() {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const buttonRef = useRef(null);
+  const videoRef = useRef(null);
 
   useGSAP(() => {
     gsap.to(heroContainerRef.current, {
@@ -26,18 +27,46 @@ export default function HeroSection() {
       y: 500,
       duration: 1.2,
       ease: "power4.out",
+      delay: 3,
     });
 
     gsap.fromTo(
       subtitleRef.current,
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1.2, ease: "power4.out", delay: 0.3 }
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        delay: 3.3,
+      }
     );
 
     gsap.fromTo(
       buttonRef.current,
       { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 1.2, ease: "power4.out", delay: 0.3 }
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: "power4.out",
+        delay: 3.6,
+      }
+    );
+
+    gsap.fromTo(
+      videoRef.current,
+      {
+        scale: 5,
+        opacity: 0.6,
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 2.5,
+        ease: "power2.out",
+        delay: 0.2,
+      }
     );
   }, []);
 
@@ -47,13 +76,15 @@ export default function HeroSection() {
       className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-black overflow-hidden"
     >
       <video
-        className=" absolute inset-0 w-full h-full object-cover z-0"
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         loop
         muted
         playsInline
         src="/bg.mp4"
       />
+
       <div className="absolute inset-0 bg-opacity-40 z-1" />
       <div className="relative z-10 px-6">
         <h1

@@ -10,10 +10,9 @@ export default function HeroSection() {
   const subtitleRef = useRef(null);
   const buttonRef = useRef(null);
   const videoRef = useRef(null);
-  const curtainRef = useRef(null); // ← le rideau
+  const curtainRef = useRef(null);
 
   useGSAP(() => {
-    // Rideau noir
     gsap.to(curtainRef.current, {
       yPercent: -100,
       duration: 1.5,
@@ -21,7 +20,6 @@ export default function HeroSection() {
       delay: 0.5,
     });
 
-    // Vidéo zoom reveal
     gsap.fromTo(
       videoRef.current,
       {
@@ -37,7 +35,6 @@ export default function HeroSection() {
       }
     );
 
-    // Pinning scroll
     gsap.to(heroContainerRef.current, {
       scrollTrigger: {
         trigger: heroContainerRef.current,
@@ -48,7 +45,6 @@ export default function HeroSection() {
       },
     });
 
-    // Contenu
     gsap.from(titleRef.current, {
       opacity: 1,
       y: 500,
@@ -87,7 +83,6 @@ export default function HeroSection() {
       ref={heroContainerRef}
       className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-black overflow-hidden"
     >
-      {/* 🧥 Le rideau noir */}
       <div ref={curtainRef} className="absolute inset-0 bg-black z-50" />
 
       <video

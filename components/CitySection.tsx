@@ -9,10 +9,10 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const destinations = [
-  { title: "New York", image: "/new-york.jpg" },
-  { title: "Tokyo", image: "/tokyo.jpg" },
-  { title: "Paris", image: "/paris.jpg" },
-  { title: "Sydney", image: "/sydney.jpg" },
+  { title: "New York", image: "/new-york.jpg", video: "/new-york.mp4" },
+  { title: "Tokyo", image: "/tokyo.jpg", video: "/tokyo.mp4" },
+  { title: "Paris", image: "/paris.jpg", video: "/paris.mp4" },
+  { title: "Sydney", image: "/sydney.jpg", video: "/sydney.mp4" },
 ];
 
 export default function CitySection() {
@@ -68,15 +68,27 @@ export default function CitySection() {
         className="flex space-x-32 h-full items-center px-32 pr-[500px]"
       >
         {destinations.map((dest, index) => (
-          <div key={index} className="flex-shrink-0 group relative">
+          <div
+            key={index}
+            className="flex-shrink-0 group relative w-[600px] h-[337px]"
+          >
             <Image
               src={dest.image}
               alt={dest.title}
-              width={500}
-              height={600}
+              fill
               className="floating-image rounded-3xl shadow-2xl object-cover transition-transform duration-500"
             />
-            <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-10px] transition-all duration-300">
+
+            <video
+              className="absolute top-0 left-0 w-full h-full rounded-3xl shadow-2xl object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              src={dest.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+
+            <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-10px] transition-all duration-300 z-20">
               <p className="text-white text-lg font-semibold">{dest.title}</p>
             </div>
           </div>

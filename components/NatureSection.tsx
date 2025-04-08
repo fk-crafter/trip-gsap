@@ -9,10 +9,14 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const destinations = [
-  { title: "Kyoto", image: "/kyoto.jpg" },
-  { title: "Swiss Alps", image: "/swiss-alps.jpg" },
-  { title: "Black Forest", image: "/black-forest.jpg" },
-  { title: "Banff", image: "/banff.jpg" },
+  { title: "Kyoto", image: "/kyoto.jpg", video: "/kyoto.mp4" },
+  { title: "Swiss Alps", image: "/swiss-alps.jpg", video: "/swiss-alps.mp4" },
+  {
+    title: "Black Forest",
+    image: "/black-forest.jpg",
+    video: "/black-forest.mp4",
+  },
+  { title: "Banff", image: "/banff.jpg", video: "/banff.mp4" },
 ];
 
 export default function NatureSection() {
@@ -68,15 +72,27 @@ export default function NatureSection() {
         className="flex space-x-32 h-full items-center px-32 pr-[500px]"
       >
         {destinations.map((dest, index) => (
-          <div key={index} className="flex-shrink-0 group relative">
+          <div
+            key={index}
+            className="flex-shrink-0 group relative w-[600px] h-[337px]"
+          >
             <Image
               src={dest.image}
               alt={dest.title}
-              width={500}
-              height={600}
+              fill
               className="floating-image rounded-3xl shadow-2xl object-cover transition-transform duration-500"
             />
-            <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-10px] transition-all duration-300">
+
+            <video
+              className="absolute top-0 left-0 w-full h-full rounded-3xl shadow-2xl object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              src={dest.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+
+            <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-10px] transition-all duration-300 z-20">
               <p className="text-white text-lg font-semibold">{dest.title}</p>
             </div>
           </div>

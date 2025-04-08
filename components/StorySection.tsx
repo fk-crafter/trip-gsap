@@ -92,7 +92,7 @@ export default function StorySection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full z-50 py-12 pt-52 px-4 text-black overflow-hidden"
+      className="w-full z-50 py-12 bg-blue-50/50 pt-52 px-4 text-black overflow-hidden"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start min-h-[140vh]">
         <div ref={leftRef} className="relative">
@@ -107,7 +107,10 @@ export default function StorySection() {
           </div>
         </div>
 
-        <div ref={rightRef} className="relative h-[280vh] overflow-hidden">
+        <div
+          ref={rightRef}
+          className="relative h-[280vh] overflow-hidden rounded-lg p-6"
+        >
           <div ref={scrollableRef} className="space-y-48">
             {[
               {

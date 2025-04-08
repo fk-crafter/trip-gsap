@@ -62,7 +62,7 @@ export default function WorldMap() {
   if (!isClient) return null;
 
   return (
-    <section className="w-full h-[90vh] z-50 bg-white flex items-center justify-center relative">
+    <section className="w-full h-[100vh] z-50 bg-white flex items-center justify-center relative">
       <ComposableMap
         projection="geoEqualEarth"
         width={980}

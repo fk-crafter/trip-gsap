@@ -19,7 +19,8 @@
     "next": "15.2.2",
     "postcss@latest": "link:tailwindcss/postcss@latest",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-simple-maps": "^3.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

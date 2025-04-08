@@ -104,11 +104,11 @@ export default function HeroSection() {
           ref={buttonRef}
           className="mt-10 flex flex-wrap gap-4 justify-center items-center"
         >
-          {["Things to do", "Watch video", "Plan your visit"].map(
+          {["Things to do", "Watch video", "Plan your trip"].map(
             (label, index) => (
               <button
                 key={index}
-                className="px-6 py-3 uppercase text-sm tracking-wider text-white border border-white bg-transparent rounded-md transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-sm"
+                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border border-white bg-transparent rounded-md transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-sm"
               >
                 {label}
               </button>

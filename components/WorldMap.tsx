@@ -38,7 +38,7 @@ const destinations = [
     coordinates: [-116.8258, 36.5054],
     image: "/death-valley.jpg",
   },
-  { name: "Maldives", coordinates: [73.2207, 3.2028], image: "/maldive.jpg" },
+  { name: "Maldives", coordinates: [73.2207, 3.2028], image: "/maldives.jpg" },
   {
     name: "Bora Bora",
     coordinates: [-151.7415, -16.5004],
@@ -47,6 +47,12 @@ const destinations = [
   { name: "Tulum", coordinates: [-87.4667, 20.211], image: "/tulum.jpg" },
   { name: "Bali", coordinates: [115.1889, -8.4095], image: "/bali.jpg" },
 ];
+
+// Typing for geographies
+type Geo = {
+  rsmKey: string;
+  [key: string]: unknown;
+};
 
 export default function WorldMap() {
   const [selected, setSelected] = useState<null | (typeof destinations)[0]>(
@@ -71,8 +77,8 @@ export default function WorldMap() {
       >
         <ZoomableGroup zoom={zoom}>
           <Geographies geography={geoUrl}>
-            {({ geographies }: { geographies: any }) =>
-              geographies.map((geo: any) => (
+            {({ geographies }: { geographies: Geo[] }) =>
+              geographies.map((geo) => (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}

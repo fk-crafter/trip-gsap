@@ -100,12 +100,21 @@ export default function HeroSection() {
           Discover breathtaking landscapes, immerse yourself in diverse
           cultures, and create unforgettable memories.
         </p>
-        <button
+        <div
           ref={buttonRef}
-          className="mt-6 px-8 py-4 cursor-pointer bg-gradient-to-r from-blue-600 to-blue-400 text-white font-bold text-lg rounded-full shadow-md transition-transform duration-200 ease-out hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:shadow-lg hover:translate-y-[-2px] active:scale-95"
+          className="mt-10 flex flex-wrap gap-4 justify-center items-center"
         >
-          Start Your Journey
-        </button>
+          {["Things to do", "Watch video", "Plan your visit"].map(
+            (label, index) => (
+              <button
+                key={index}
+                className="px-6 py-3 uppercase text-sm tracking-wider text-white border border-white bg-transparent rounded-md transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-sm"
+              >
+                {label}
+              </button>
+            )
+          )}
+        </div>
       </div>
     </section>
   );

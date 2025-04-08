@@ -45,7 +45,13 @@ export default function Gallery() {
   return (
     <section className="min-h-[250vh] pt-72 relative z-50 flex flex-col items-center justify-center gap-20 text-black overflow-hidden">
       {[Image1, Image2, Image3].map((img, index) => (
-        <div key={index} className="relative group w-fit z-10">
+        <div
+          key={index}
+          className={`relative group w-fit z-10 ${
+            index % 2 === 0 ? "translate-x-32" : "-translate-x-32"
+          }`}
+        >
+          {" "}
           <Image
             ref={(el) => setRef(el, index)}
             src={img}
@@ -54,8 +60,10 @@ export default function Gallery() {
             height={500}
             className="z-10 rounded-3xl shadow-xl object-cover"
           />
-          <div className="absolute left-[-220px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-800 bg-white/90 backdrop-blur-sm p-4 rounded shadow-lg pointer-events-none">
-            <p>{hoverTexts[index]}</p>
+          <div className="absolute left-[-220px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 text-white bg-gradient-to-br from-slate-600 to-slate-800 backdrop-blur-md p-4 rounded-2xl shadow-2xl pointer-events-none scale-95 group-hover:scale-100">
+            <p className="text-lg font-medium tracking-wide">
+              {hoverTexts[index]}
+            </p>
           </div>
         </div>
       ))}

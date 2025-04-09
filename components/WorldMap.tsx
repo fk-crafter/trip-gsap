@@ -48,7 +48,6 @@ const destinations = [
   { name: "Bali", coordinates: [115.1889, -8.4095], image: "/bali.jpg" },
 ];
 
-// Typing for geographies
 type Geo = {
   rsmKey: string;
   [key: string]: unknown;
@@ -65,7 +64,13 @@ export default function WorldMap() {
     setIsClient(true);
   }, []);
 
-  if (!isClient) return null;
+  if (!isClient) {
+    return (
+      <section className="w-full h-[100vh] flex items-center justify-center bg-white">
+        <p className="text-black">Loading map...</p>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full h-[100vh] z-50 bg-white flex items-center justify-center relative">

@@ -16,7 +16,7 @@ export default function HeroSection() {
   useGSAP(() => {
     gsap.to(curtainRef.current, {
       yPercent: -100,
-      duration: 1.5,
+      duration: 3,
       ease: "power4.inOut",
       delay: 0.5,
     });
@@ -30,7 +30,7 @@ export default function HeroSection() {
       {
         scale: 1,
         opacity: 1,
-        duration: 3,
+        duration: 4,
         ease: "power2.out",
         delay: 0.5,
       }

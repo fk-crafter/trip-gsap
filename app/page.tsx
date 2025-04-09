@@ -13,6 +13,7 @@ import FlightIntro from "@/components/FlightIntro";
 import ChoiceSection from "@/components/ChoiceSection";
 import WorldMap from "@/components/WorldMap";
 import MapRevealSection from "@/components/MapRevealSection";
+import CulturalSection from "@/components/CulturalSection";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <ChoiceSection />
       <MapRevealSection />
       <WorldMap />
+      <CulturalSection />
     </div>
   );
 }

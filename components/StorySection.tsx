@@ -42,7 +42,7 @@ export default function StorySection() {
     });
 
     gsap.to(scrollableRef.current, {
-      yPercent: -100,
+      yPercent: -105,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -79,7 +79,7 @@ export default function StorySection() {
           delay: index * 0.2,
           scrollTrigger: {
             trigger: item,
-            start: "top 70%",
+            start: "top 90%",
             toggleActions: "play none none reverse",
           },
         }
@@ -109,7 +109,7 @@ export default function StorySection() {
 
         <div
           ref={rightRef}
-          className="relative h-[280vh] overflow-hidden rounded-lg p-6"
+          className="relative h-[290vh] overflow-hidden rounded-lg p-6"
         >
           <div ref={scrollableRef} className="space-y-48">
             {[

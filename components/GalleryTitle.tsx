@@ -45,7 +45,7 @@ export default function GalleryTitle() {
   }, []);
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center py-32 overflow-hidden z-50">
+    <div className="relative w-full h-screen flex flex-col items-center justify-center py-32 overflow-hidden z-50">
       <div
         ref={grainRef}
         className="absolute inset-0 pointer-events-none z-0 opacity-0 bg-[url('/grain.png')] bg-cover"

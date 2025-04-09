@@ -84,7 +84,7 @@ export default function NatureSection() {
             />
 
             <video
-              className="absolute top-0 left-0 w-full h-full rounded-3xl shadow-2xl object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              className="absolute -top-[5px] left-0 w-full h-full rounded-3xl shadow-2xl object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
               src={dest.video}
               autoPlay
               loop

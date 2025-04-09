@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 export default function HeroSection() {
   const heroContainerRef = useRef(null);
@@ -83,8 +84,21 @@ export default function HeroSection() {
       ref={heroContainerRef}
       className="relative flex flex-col justify-center items-center h-screen text-center text-white bg-black overflow-hidden"
     >
-      <div ref={curtainRef} className="absolute inset-0 bg-black z-50" />
-
+      <div
+        ref={curtainRef}
+        className="absolute inset-0 bg-black z-50 flex flex-col justify-center items-center"
+      >
+        <Image
+          src="/logo.png"
+          alt="Logo"
+          className="w-80 h-40 mb-4 animate-pulse invert"
+          width={300}
+          height={300}
+        />
+        <p className="text-white text-lg tracking-wide animate-pulse">
+          Loading...
+        </p>
+      </div>
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover z-0"

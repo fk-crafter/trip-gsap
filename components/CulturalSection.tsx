@@ -17,8 +17,6 @@ export default function CulturalSection() {
     }
   };
 
-  const videoPaths = ["/kyoto.mp4", "/tulum.mp4", "/maldives.mp4"];
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       const totalSlides = videoPaths.length;
@@ -52,12 +50,20 @@ export default function CulturalSection() {
     return () => ctx.revert();
   }, []);
 
+  const videoPaths = [
+    "/kyoto-break.mp4",
+    "/japan-food.mp4",
+    "/morocco.mp4",
+    "/morocco-souk.mov",
+    "/moroccan-food.mov",
+  ];
+
   return (
     <div
       ref={containerRef}
       className="relative w-full h-screen overflow-hidden z-50"
     >
-      <div ref={scrollRef} className="flex h-full w-[388vw]">
+      <div ref={scrollRef} className="flex h-full w-[790vw]">
         {videoPaths.map((src, index) => (
           <video
             key={index}

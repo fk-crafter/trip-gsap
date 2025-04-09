@@ -56,13 +56,13 @@ export default function NatureSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen overflow-hidden bg-black text-white z-50"
+      className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-[#e3f2f1] to-[#fef9f3] text-gray-800 z-50"
     >
       <div className="absolute top-16 left-1/2 -translate-x-1/2 text-center z-10">
-        <h2 className="text-4xl font-bold uppercase tracking-widest">
+        <h2 className="text-4xl font-bold tracking-tight text-emerald-700">
           Nature Escapes
         </h2>
-        <p className="text-white/70 mt-2 max-w-md mx-auto text-sm">
+        <p className="text-gray-600 mt-2 max-w-md mx-auto text-sm">
           Reconnect with your roots, surrounded by silence and trees.
         </p>
       </div>
@@ -74,17 +74,17 @@ export default function NatureSection() {
         {destinations.map((dest, index) => (
           <div
             key={index}
-            className="flex-shrink-0 group relative w-[600px] h-[337px]"
+            className="flex-shrink-0 group relative w-[600px] h-[337px] rounded-3xl overflow-hidden shadow-xl"
           >
             <Image
               src={dest.image}
               alt={dest.title}
               fill
-              className="floating-image rounded-3xl shadow-2xl object-cover transition-transform duration-500"
+              className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
             />
 
             <video
-              className="absolute -top-[5px] left-0 w-full h-full rounded-3xl shadow-2xl object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 rounded-3xl"
               src={dest.video}
               autoPlay
               loop
@@ -92,8 +92,10 @@ export default function NatureSection() {
               playsInline
             />
 
-            <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-10px] transition-all duration-300 z-20">
-              <p className="text-white text-lg font-semibold">{dest.title}</p>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+              <p className="text-white text-lg font-semibold bg-black/40 px-4 py-1 rounded-full backdrop-blur-md">
+                {dest.title}
+              </p>
             </div>
           </div>
         ))}

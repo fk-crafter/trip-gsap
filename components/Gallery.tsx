@@ -6,9 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
-import Image1 from "@/public/breathe.jpg";
-import Image2 from "@/public/move.jpg";
-import Image3 from "@/public/connect.jpg";
+import Image1 from "@/public/img/breathe.jpg";
+import Image2 from "@/public/img/move.jpg";
+import Image3 from "@/public/img/connect.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 

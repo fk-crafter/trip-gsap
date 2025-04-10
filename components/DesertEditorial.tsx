@@ -10,26 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
 const destinations = [
   {
     title: "Sahara",
-    image: "/sahara.jpg",
-    video: "/sahara.mp4",
+    image: "/img/sahara.jpg",
+    video: "/video/sahara.mp4",
     description: "Endless dunes and the golden silence of ancient sands.",
   },
   {
     title: "Atacama",
-    image: "/atacama.jpg",
-    video: "/atacama.mp4",
+    image: "/img/atacama.jpg",
+    video: "/video/atacama.mp4",
     description: "Earth's driest desert, rich in stars and surreal colors.",
   },
   {
     title: "Wadi Rum",
-    image: "/wadi-rum.jpg",
-    video: "/wadi-rum.mp4",
+    image: "/img/wadi-rum.jpg",
+    video: "/video/wadi-rum.mp4",
     description: "Canyons carved by time, under red Martian-like skies.",
   },
   {
     title: "Death Valley",
-    image: "/death-valley.jpg",
-    video: "/death-valley.mp4",
+    image: "/img/death-valley.jpg",
+    video: "/video/death-valley.mp4",
     description: "Extreme heat and iconic desertscapes in California.",
   },
 ];

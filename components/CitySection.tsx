@@ -9,10 +9,14 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const destinations = [
-  { title: "New York", image: "/new-york.jpg", video: "/new-york.mp4" },
-  { title: "Tokyo", image: "/tokyo.jpg", video: "/tokyo.mp4" },
-  { title: "Paris", image: "/paris.jpg", video: "/paris.mp4" },
-  { title: "Sydney", image: "/sydney.jpg", video: "/sydney.mp4" },
+  {
+    title: "New York",
+    image: "/img/new-york.jpg",
+    video: "/video/new-york.mp4",
+  },
+  { title: "Tokyo", image: "/img/tokyo.jpg", video: "/video/tokyo.mp4" },
+  { title: "Paris", image: "/img/paris.jpg", video: "/video/paris.mp4" },
+  { title: "Sydney", image: "/img/sydney.jpg", video: "/video/sydney.mp4" },
 ];
 
 export default function CitySection() {

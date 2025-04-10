@@ -9,13 +9,17 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const destinations = [
-  { title: "Sahara", image: "/sahara.jpg", video: "/sahara.mp4" },
-  { title: "Atacama", image: "/atacama.jpg", video: "/atacama.mp4" },
-  { title: "Wadi Rum", image: "/wadi-rum.jpg", video: "/wadi-rum.mp4" },
+  { title: "Sahara", image: "/img/sahara.jpg", video: "/video/sahara.mp4" },
+  { title: "Atacama", image: "/img/atacama.jpg", video: "/video/atacama.mp4" },
+  {
+    title: "Wadi Rum",
+    image: "/img/wadi-rum.jpg",
+    video: "/video/wadi-rum.mp4",
+  },
   {
     title: "Death Valley",
-    image: "/death-valley.jpg",
-    video: "/death-valley.mp4",
+    image: "/img/death-valley.jpg",
+    video: "/video/death-valley.mp4",
   },
 ];
 

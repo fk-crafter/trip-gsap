@@ -10,26 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
 const destinations = [
   {
     title: "New York",
-    image: "/new-york.jpg",
-    video: "/new-york.mp4",
+    image: "/img/new-york.jpg",
+    video: "/video/new-york.mp4",
     description: "Skyscrapers, yellow cabs, and the rhythm of big city life.",
   },
   {
     title: "Tokyo",
-    image: "/tokyo.jpg",
-    video: "/tokyo.mp4",
+    image: "/img/tokyo.jpg",
+    video: "/video/tokyo.mp4",
     description: "Neon nights and high-speed culture in the heart of Japan.",
   },
   {
     title: "Paris",
-    image: "/paris.jpg",
-    video: "/paris.mp4",
+    image: "/img/paris.jpg",
+    video: "/video/paris.mp4",
     description: "Romantic streets and timeless elegance by the Seine.",
   },
   {
     title: "Sydney",
-    image: "/sydney.jpg",
-    video: "/sydney.mp4",
+    image: "/img/sydney.jpg",
+    video: "/video/sydney.mp4",
     description: "Harbor lights, iconic sails, and vibrant coastal life.",
   },
 ];

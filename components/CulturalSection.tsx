@@ -51,11 +51,11 @@ export default function CulturalSection() {
   }, []);
 
   const videoPaths = [
-    "/kyoto-break.mp4",
-    "/japan-food.mp4",
-    "/morocco.mp4",
-    "/morocco-souk.mov",
-    "/moroccan-food.mov",
+    "/video/kyoto-break.mp4",
+    "/video/japan-food.mp4",
+    "/video/morocco.mp4",
+    "/video/morocco-souk.mov",
+    "/video/moroccan-food.mov",
   ];
 
   return (

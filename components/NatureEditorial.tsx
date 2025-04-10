@@ -10,26 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
 const destinations = [
   {
     title: "Kyoto",
-    image: "/kyoto.jpg",
-    video: "/kyoto.mp4",
+    image: "/img/kyoto.jpg",
+    video: "/video/kyoto.mp4",
     description: "A spiritual journey through peaceful Zen temples.",
   },
   {
     title: "Swiss Alps",
-    image: "/swiss-alps.jpg",
-    video: "/swiss-alps.mp4",
+    image: "/img/swiss-alps.jpg",
+    video: "/video/swiss-alps.mp4",
     description: "Dive into alpine heights, where snow meets silence.",
   },
   {
     title: "Black Forest",
-    image: "/black-forest.jpg",
-    video: "/black-forest.mp4",
+    image: "/img/black-forest.jpg",
+    video: "/video/black-forest.mp4",
     description: "Mysteries and legends deep in the heart of the forest.",
   },
   {
     title: "Banff",
-    image: "/banff.jpg",
-    video: "/banff.mp4",
+    image: "/img/banff.jpg",
+    video: "/video/banff.mp4",
     description: "Turquoise lakes and majestic peaks in the Canadian Rockies.",
   },
 ];

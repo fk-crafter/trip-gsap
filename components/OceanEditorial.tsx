@@ -10,26 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
 const destinations = [
   {
     title: "Maldives",
-    image: "/maldives.jpg",
-    video: "/maldives.mp4",
+    image: "/img/maldives.jpg",
+    video: "/video/maldives.mp4",
     description: "Crystal-clear waters and overwater bungalows in paradise.",
   },
   {
     title: "Bora Bora",
-    image: "/bora-bora.jpg",
-    video: "/bora-bora.mp4",
+    image: "/img/bora-bora.jpg",
+    video: "/video/bora-bora.mp4",
     description: "Turquoise lagoons and tropical serenity in French Polynesia.",
   },
   {
     title: "Tulum",
-    image: "/tulum.jpg",
-    video: "/tulum.mp4",
+    image: "/img/tulum.jpg",
+    video: "/video/tulum.mp4",
     description: "Where ancient ruins meet dreamy white-sand beaches.",
   },
   {
     title: "Bali",
-    image: "/bali.jpg",
-    video: "/bali.mp4",
+    image: "/img/bali.jpg",
+    video: "/video/bali.mp4",
     description: "Lush island life and golden sunsets over the ocean.",
   },
 ];

@@ -9,14 +9,18 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const destinations = [
-  { title: "Kyoto", image: "/kyoto.jpg", video: "/kyoto.mp4" },
-  { title: "Swiss Alps", image: "/swiss-alps.jpg", video: "/swiss-alps.mp4" },
+  { title: "Kyoto", image: "/img/kyoto.jpg", video: "/video/kyoto.mp4" },
+  {
+    title: "Swiss Alps",
+    image: "/img/swiss-alps.jpg",
+    video: "/video/swiss-alps.mp4",
+  },
   {
     title: "Black Forest",
-    image: "/black-forest.jpg",
-    video: "/black-forest.mp4",
+    image: "/img/black-forest.jpg",
+    video: "/video/black-forest.mp4",
   },
-  { title: "Banff", image: "/banff.jpg", video: "/banff.mp4" },
+  { title: "Banff", image: "/img/banff.jpg", video: "/video/banff.mp4" },
 ];
 
 export default function NatureSection() {

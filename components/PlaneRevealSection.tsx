@@ -55,7 +55,7 @@ export default function PlaneRevealSection() {
       >
         <Image
           ref={planeRef}
-          src="/plane.png"
+          src="/img/plane.png"
           alt="Flying Plane"
           width={800}
           height={800}

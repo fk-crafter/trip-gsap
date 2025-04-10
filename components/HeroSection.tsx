@@ -3,7 +3,10 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { TextPlugin } from "gsap/TextPlugin";
 import Image from "next/image";
+
+gsap.registerPlugin(TextPlugin);
 
 export default function HeroSection() {
   const heroContainerRef = useRef(null);
@@ -12,8 +15,27 @@ export default function HeroSection() {
   const buttonRef = useRef(null);
   const videoRef = useRef(null);
   const curtainRef = useRef(null);
+  const loadingRef = useRef(null);
 
   useGSAP(() => {
+    gsap.to(".hero-logo", {
+      scale: 1.05,
+      opacity: 0.9,
+      duration: 2.5,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+    });
+
+    gsap.to(loadingRef.current, {
+      scale: 1.05,
+      opacity: 0.3,
+      duration: 1.6,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+    });
+
     gsap.to(curtainRef.current, {
       yPercent: -100,
       duration: 3,
@@ -89,14 +111,17 @@ export default function HeroSection() {
         className="absolute inset-0 bg-black z-50 flex flex-col justify-center items-center"
       >
         <Image
-          src="/logo.png"
+          src="/img/logo.png"
           alt="Logo"
-          className="w-80 h-40 mb-4 animate-pulse invert"
+          className="w-80 h-40 mb-4 invert hero-logo"
           width={300}
           height={300}
         />
-        <p className="text-white text-lg tracking-wide animate-pulse">
-          Loading...
+        <p
+          ref={loadingRef}
+          className="text-white text-lg tracking-wider font-light mt-2 uppercase"
+        >
+          Loading
         </p>
       </div>
       <video
@@ -119,7 +144,7 @@ export default function HeroSection() {
         </h1>
         <p
           ref={subtitleRef}
-          className="mt-4 text-lg md:text-xl max-w-3xl text-white bg-black/40 px-4 py-2 rounded-md backdrop-blur-sm shadow-md"
+          className="mt-4 text-lg md:text-xl max-w-3xl text-white bg-black/20 px-4 py-2 rounded-md backdrop-blur-sm shadow-md"
         >
           Discover breathtaking landscapes, immerse yourself in diverse
           cultures, and create unforgettable memories.

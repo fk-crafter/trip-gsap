@@ -119,7 +119,7 @@ export default function HeroSection() {
         </h1>
         <p
           ref={subtitleRef}
-          className="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+          className="mt-4 text-lg md:text-xl max-w-3xl text-white bg-black/40 px-4 py-2 rounded-md backdrop-blur-sm shadow-md"
         >
           Discover breathtaking landscapes, immerse yourself in diverse
           cultures, and create unforgettable memories.
@@ -132,7 +132,7 @@ export default function HeroSection() {
             (label, index) => (
               <button
                 key={index}
-                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border border-white bg-transparent rounded-md transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-sm"
+                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border border-white bg-black/30 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
               >
                 {label}
               </button>

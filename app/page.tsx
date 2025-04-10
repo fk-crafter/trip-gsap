@@ -13,8 +13,12 @@ import FlightIntro from "@/components/FlightIntro";
 import ChoiceSection from "@/components/ChoiceSection";
 import WorldMap from "@/components/WorldMap";
 import MapRevealSection from "@/components/MapRevealSection";
-import CulturalSection from "@/components/CulturalSection";
+// import CulturalSection from "@/components/CulturalSection";
 import BreakSection from "@/components/BreakSection";
+import NatureEditorial from "@/components/NatureEditorial";
+import OceanEditorial from "@/components/OceanEditorial";
+import CityEditorial from "@/components/CityEditorial";
+import DesertEditorial from "@/components/DesertEditorial";
 
 export default function Home() {
   return (
@@ -27,15 +31,20 @@ export default function Home() {
       <StorySection />
       <FlightIntro />
       <PlaneRevealSection />
-      <NatureSection />
-      <OceanSection />
-      <CitySection />
-      <DesertSection />
+      {/* <NatureSection />
+        <OceanSection />
+        <CitySection />
+        <DesertSection /> */}
+      <NatureEditorial />
+      <OceanEditorial />
+      <CityEditorial />
+      <DesertEditorial />
+
       <ChoiceSection />
       <MapRevealSection />
       <WorldMap />
       <BreakSection />
-      <CulturalSection />
+      {/* <CulturalSection /> */}
     </div>
   );
 }

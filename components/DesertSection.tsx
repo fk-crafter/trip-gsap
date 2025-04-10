@@ -39,6 +39,7 @@ export default function DesertSection() {
       borderColor="border-white/10"
       gradient="from-[#f7d199] via-[#f3b36b] to-[#d87c3a]"
       destinations={desertDestinations}
+      enableHoverPreview={true}
     />
   );
 }

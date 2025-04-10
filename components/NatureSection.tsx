@@ -39,6 +39,7 @@ export default function NatureSection() {
       borderColor="border-gray-300"
       gradient="from-[#e3f2f1] to-[#fef9f3]"
       destinations={natureDestinations}
+      enableHoverPreview={true}
     />
   );
 }

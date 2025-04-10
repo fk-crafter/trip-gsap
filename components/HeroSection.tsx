@@ -157,7 +157,7 @@ export default function HeroSection() {
             (label, index) => (
               <button
                 key={index}
-                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border border-white bg-black/30 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
+                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border  bg-black/30 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
               >
                 {label}
               </button>

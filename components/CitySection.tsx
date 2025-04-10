@@ -39,6 +39,7 @@ export default function CitySection() {
       borderColor="border-white/10"
       gradient="from-[#0f0c29] via-[#302b63] to-[#24243e]"
       destinations={cityDestinations}
+      enableHoverPreview={true}
     />
   );
 }

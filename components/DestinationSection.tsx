@@ -4,14 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
-export type Destination = {
+type Destination = {
   title: string;
   image: string;
   video: string;
   description: string;
 };
 
-interface DestinationSectionProps {
+type Props = {
   title: string;
   description: string;
   themeColor: string;
@@ -19,7 +19,8 @@ interface DestinationSectionProps {
   borderColor: string;
   gradient: string;
   destinations: Destination[];
-}
+  enableHoverPreview?: boolean;
+};
 
 export default function DestinationSection({
   title,
@@ -29,13 +30,43 @@ export default function DestinationSection({
   borderColor,
   gradient,
   destinations,
-}: DestinationSectionProps) {
+  enableHoverPreview = false,
+}: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
+  const [showPreview, setShowPreview] = useState(false);
 
   return (
     <section
-      className={`z-50 w-full bg-gradient-to-b ${gradient} text-white py-20 transition-all duration-700`}
+      className={`relative z-50 w-full bg-gradient-to-b ${gradient} text-gray-800 py-20 transition-all duration-700`}
+      onMouseMove={(e) => {
+        if (!enableHoverPreview || isOpen) return;
+        setHoverPos({ x: e.clientX, y: e.clientY });
+        setShowPreview(true);
+      }}
+      onMouseLeave={() => setShowPreview(false)}
     >
+      {!isOpen && enableHoverPreview && (
+        <div
+          className="pointer-events-none fixed z-[999] transition-opacity duration-300 ease-out"
+          style={{
+            top: hoverPos.y + 20,
+            left: hoverPos.x + 20,
+            opacity: showPreview ? 1 : 0,
+          }}
+        >
+          <div className="w-48 h-32 rounded-lg overflow-hidden shadow-lg border border-white/30">
+            <Image
+              src={destinations[0].image}
+              alt="Preview"
+              width={192}
+              height={128}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      )}
+
       <div className="text-center px-6">
         <h2
           className={`text-4xl md:text-5xl font-bold tracking-tight ${themeColor}`}
@@ -43,7 +74,7 @@ export default function DestinationSection({
           {title}
         </h2>
         <p
-          className={`mt-3 max-w-xl mx-auto text-base md:text-lg ${textColor}`}
+          className={`${textColor} mt-3 max-w-xl mx-auto text-base md:text-lg`}
         >
           {description}
         </p>

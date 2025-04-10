@@ -14,38 +14,54 @@ import Image from "next/image";
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 const destinations = [
-  { name: "Kyoto", coordinates: [135.7681, 35.0116], image: "/kyoto.jpg" },
+  { name: "Kyoto", coordinates: [135.7681, 35.0116], image: "/img/kyoto.jpg" },
   {
     name: "Swiss Alps",
     coordinates: [8.2275, 46.8182],
-    image: "/swiss-alps.jpg",
+    image: "/img/swiss-alps.jpg",
   },
   {
     name: "Black Forest",
     coordinates: [8.2, 48.0],
-    image: "/black-forest.jpg",
+    image: "/img/black-forest.jpg",
   },
-  { name: "Banff", coordinates: [-115.5708, 51.1784], image: "/banff.jpg" },
-  { name: "New York", coordinates: [-74.006, 40.7128], image: "/new-york.jpg" },
-  { name: "Tokyo", coordinates: [139.6917, 35.6895], image: "/tokyo.jpg" },
-  { name: "Paris", coordinates: [2.3522, 48.8566], image: "/paris.jpg" },
-  { name: "Sydney", coordinates: [151.2093, -33.8688], image: "/sydney.jpg" },
-  { name: "Sahara", coordinates: [13.0, 23.0], image: "/sahara.jpg" },
-  { name: "Atacama", coordinates: [-68.25, -24.5], image: "/atacama.jpg" },
-  { name: "Wadi Rum", coordinates: [35.4194, 29.5328], image: "/wadi-rum.jpg" },
+  { name: "Banff", coordinates: [-115.5708, 51.1784], image: "/img/banff.jpg" },
+  {
+    name: "New York",
+    coordinates: [-74.006, 40.7128],
+    image: "/img/new-york.jpg",
+  },
+  { name: "Tokyo", coordinates: [139.6917, 35.6895], image: "/img/tokyo.jpg" },
+  { name: "Paris", coordinates: [2.3522, 48.8566], image: "/img/paris.jpg" },
+  {
+    name: "Sydney",
+    coordinates: [151.2093, -33.8688],
+    image: "/img/sydney.jpg",
+  },
+  { name: "Sahara", coordinates: [13.0, 23.0], image: "/img/sahara.jpg" },
+  { name: "Atacama", coordinates: [-68.25, -24.5], image: "/img/atacama.jpg" },
+  {
+    name: "Wadi Rum",
+    coordinates: [35.4194, 29.5328],
+    image: "/img/wadi-rum.jpg",
+  },
   {
     name: "Death Valley",
     coordinates: [-116.8258, 36.5054],
-    image: "/death-valley.jpg",
+    image: "/img/death-valley.jpg",
   },
-  { name: "Maldives", coordinates: [73.2207, 3.2028], image: "/maldives.jpg" },
+  {
+    name: "Maldives",
+    coordinates: [73.2207, 3.2028],
+    image: "/img/maldives.jpg",
+  },
   {
     name: "Bora Bora",
     coordinates: [-151.7415, -16.5004],
-    image: "/bora-bora.jpg",
+    image: "/img/bora-bora.jpg",
   },
-  { name: "Tulum", coordinates: [-87.4667, 20.211], image: "/tulum.jpg" },
-  { name: "Bali", coordinates: [115.1889, -8.4095], image: "/bali.jpg" },
+  { name: "Tulum", coordinates: [-87.4667, 20.211], image: "/img/tulum.jpg" },
+  { name: "Bali", coordinates: [115.1889, -8.4095], image: "/img/bali.jpg" },
 ];
 
 type Geo = {

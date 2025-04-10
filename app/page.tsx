@@ -4,10 +4,10 @@ import Gallery from "@/components/Gallery";
 import GalleryTitle from "@/components/GalleryTitle";
 import LenisProvider from "@/components/LenisProvider";
 import StorySection from "@/components/StorySection";
-// import NatureSection from "@/components/NatureSection";
-// import OceanSection from "@/components/OceanSection";
-// import CitySection from "@/components/CitySection";
-// import DesertSection from "@/components/DesertSection";
+import NatureSection from "@/components/NatureSection";
+import OceanSection from "@/components/OceanSection";
+import CitySection from "@/components/CitySection";
+import DesertSection from "@/components/DesertSection";
 import PlaneRevealSection from "@/components/PlaneRevealSection";
 import FlightIntro from "@/components/FlightIntro";
 import ChoiceSection from "@/components/ChoiceSection";
@@ -15,10 +15,6 @@ import WorldMap from "@/components/WorldMap";
 import MapRevealSection from "@/components/MapRevealSection";
 // import CulturalSection from "@/components/CulturalSection";
 import BreakSection from "@/components/BreakSection";
-import NatureEditorial from "@/components/NatureEditorial";
-import OceanEditorial from "@/components/OceanEditorial";
-import CityEditorial from "@/components/CityEditorial";
-import DesertEditorial from "@/components/DesertEditorial";
 
 export default function Home() {
   return (
@@ -31,15 +27,10 @@ export default function Home() {
       <StorySection />
       <FlightIntro />
       <PlaneRevealSection />
-      {/* <NatureSection />
-        <OceanSection />
-        <CitySection />
-        <DesertSection /> */}
-      <NatureEditorial />
-      <OceanEditorial />
-      <CityEditorial />
-      <DesertEditorial />
-
+      <NatureSection />
+      <OceanSection />
+      <CitySection />
+      <DesertSection />
       <ChoiceSection />
       <MapRevealSection />
       <WorldMap />

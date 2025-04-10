@@ -4,51 +4,55 @@ import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
-const destinations = [
-  {
-    title: "Kyoto",
-    image: "/img/kyoto.jpg",
-    video: "/video/kyoto.mp4",
-    description: "A spiritual journey through peaceful Zen temples.",
-  },
-  {
-    title: "Swiss Alps",
-    image: "/img/swiss-alps.jpg",
-    video: "/video/swiss-alps.mp4",
-    description: "Dive into alpine heights, where snow meets silence.",
-  },
-  {
-    title: "Black Forest",
-    image: "/img/black-forest.jpg",
-    video: "/video/black-forest.mp4",
-    description: "Mysteries and legends deep in the heart of the forest.",
-  },
-  {
-    title: "Banff",
-    image: "/img/banff.jpg",
-    video: "/video/banff.mp4",
-    description: "Turquoise lakes and majestic peaks in the Canadian Rockies.",
-  },
-];
+export type Destination = {
+  title: string;
+  image: string;
+  video: string;
+  description: string;
+};
 
-export default function NatureEditorial() {
+interface DestinationSectionProps {
+  title: string;
+  description: string;
+  themeColor: string;
+  textColor: string;
+  borderColor: string;
+  gradient: string;
+  destinations: Destination[];
+}
+
+export default function DestinationSection({
+  title,
+  description,
+  themeColor,
+  textColor,
+  borderColor,
+  gradient,
+  destinations,
+}: DestinationSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="z-50 w-full bg-gradient-to-b from-[#e3f2f1] to-[#fef9f3] text-gray-800 py-20 transition-all duration-700">
+    <section
+      className={`z-50 w-full bg-gradient-to-b ${gradient} text-white py-20 transition-all duration-700`}
+    >
       <div className="text-center px-6">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-emerald-700">
-          Nature Escapes
+        <h2
+          className={`text-4xl md:text-5xl font-bold tracking-tight ${themeColor}`}
+        >
+          {title}
         </h2>
-        <p className="text-gray-600 mt-3 max-w-xl mx-auto text-base md:text-lg">
-          Reconnect with nature through landscapes that inspire peace and awe.
+        <p
+          className={`mt-3 max-w-xl mx-auto text-base md:text-lg ${textColor}`}
+        >
+          {description}
         </p>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="mt-6 inline-flex items-center gap-2 text-emerald-700 hover:text-emerald-900 transition-all"
+          className={`mt-6 inline-flex items-center gap-2 ${themeColor} hover:opacity-80 transition-all`}
         >
-          {isOpen ? "Close" : "Explore"}{" "}
+          {isOpen ? "Close" : "Explore"}
           <ChevronDown
             className={`transition-transform duration-500 ${
               isOpen ? "rotate-180" : ""
@@ -70,7 +74,7 @@ export default function NatureEditorial() {
               key={index}
               className={`w-full max-w-7xl mx-auto flex flex-col md:flex-row ${
                 isReversed ? "md:flex-row-reverse" : ""
-              } gap-6 py-24 border-b border-gray-300 px-6 md:px-0 items-center`}
+              } gap-6 py-24 border-b ${borderColor} px-6 md:px-0 items-center`}
             >
               <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-xl md:w-1/2 relative group">
                 <Image
@@ -100,11 +104,15 @@ export default function NatureEditorial() {
                     isReversed ? "text-right" : "text-left"
                   }`}
                 >
-                  <h2 className="text-5xl font-bold inline-block relative group cursor-pointer text-emerald-700">
+                  <h2
+                    className={`text-5xl font-bold inline-block relative group cursor-pointer ${themeColor}`}
+                  >
                     {dest.title}
-                    <span className="absolute left-0 -bottom-1 w-0 h-1 bg-emerald-700 transition-all duration-300 group-hover:w-full"></span>
+                    <span
+                      className={`absolute left-0 -bottom-1 w-0 h-1 ${themeColor} transition-all duration-300 group-hover:w-full`}
+                    ></span>
                   </h2>
-                  <p className="text-lg text-gray-600">{dest.description}</p>
+                  <p className={`text-lg ${textColor}`}>{dest.description}</p>
                 </div>
               </div>
             </div>

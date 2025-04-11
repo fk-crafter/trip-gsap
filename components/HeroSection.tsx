@@ -16,7 +16,7 @@ export default function HeroSection() {
   const videoRef = useRef(null);
   const curtainRef = useRef(null);
   const loadingRef = useRef(null);
-
+  const lineRef = useRef(null);
   useGSAP(() => {
     gsap.to(".hero-logo", {
       scale: 1.05,
@@ -37,24 +37,21 @@ export default function HeroSection() {
     });
 
     gsap.to(curtainRef.current, {
-      yPercent: -100,
+      yPercent: 100,
       duration: 3,
       ease: "power4.inOut",
       delay: 0.5,
     });
 
-    gsap.fromTo(
+    gsap.to(
       videoRef.current,
-      {
-        scale: 5,
-        opacity: 0.6,
-      },
+
       {
         scale: 1,
         opacity: 1,
         duration: 4,
         ease: "power2.out",
-        delay: 0.5,
+        delay: 0.6,
       }
     );
 
@@ -99,6 +96,18 @@ export default function HeroSection() {
         delay: 3.6,
       }
     );
+
+    gsap.fromTo(
+      lineRef.current,
+      { opacity: 0, width: 0 },
+      {
+        opacity: 1,
+        width: "100%",
+        duration: 1.2,
+        ease: "power4.out",
+        delay: 3.6,
+      }
+    );
   }, []);
 
   return (
@@ -131,7 +140,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
-        src="/bg.mp4"
+        src="/bg2.mp4"
       />
 
       <div className="absolute inset-0 bg-opacity-40 z-1" />
@@ -142,6 +151,10 @@ export default function HeroSection() {
         >
           Explore The World
         </h1>
+        <hr
+          ref={lineRef}
+          className="w-1/2 mx-auto my-8 border-t-2 border-white"
+        />
         <p
           ref={subtitleRef}
           className="mt-4 text-lg md:text-xl max-w-3xl text-white bg-black/20 px-4 py-2 rounded-md backdrop-blur-sm shadow-md"
@@ -157,7 +170,7 @@ export default function HeroSection() {
             (label, index) => (
               <button
                 key={index}
-                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border  bg-black/30 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
+                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border  bg-black/50 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
               >
                 {label}
               </button>

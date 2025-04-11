@@ -48,14 +48,14 @@ export default function DestinationSection({
     >
       {!isOpen && enableHoverPreview && (
         <div
-          className="pointer-events-none fixed z-[999] transition-opacity duration-300 ease-out"
+          className="pointer-events-none fixed z-50 transition-opacity duration-300 ease-out"
           style={{
-            top: hoverPos.y + 20,
+            top: hoverPos.y - 100,
             left: hoverPos.x + 20,
             opacity: showPreview ? 1 : 0,
           }}
         >
-          <div className="w-48 h-32 rounded-lg overflow-hidden shadow-lg border border-white/30">
+          <div className="w-72 h-48 rounded-lg overflow-hidden shadow-lg border border-white/30">
             <Image
               src={destinations[0].image}
               alt="Preview"

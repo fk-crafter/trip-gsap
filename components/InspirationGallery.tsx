@@ -279,7 +279,7 @@ export default function InspirationGallery() {
         Moments of the World
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center max-w-6xl mx-auto">
         {visibleImages.map((img, index) => {
           const style = randomStyles[index] || { rotate: 0, translateY: 0 };
 
@@ -299,7 +299,7 @@ export default function InspirationGallery() {
                 fill
                 loading="lazy"
               />
-              <div className="absolute bottom-0 left-0 w-full bg-black/50 text-white text-sm p-2">
+              <div className="absolute bottom-0 left-0 w-full bg-black/80 text-white text-sm p-2">
                 {img.label}
               </div>
             </div>
@@ -307,13 +307,13 @@ export default function InspirationGallery() {
         })}
       </div>
 
-      {!showAll && (
+      {images.length > 12 && (
         <div className="flex justify-center mt-10">
           <button
-            onClick={() => setShowAll(true)}
+            onClick={() => setShowAll((prev) => !prev)}
             className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
           >
-            see more
+            {showAll ? "Show less" : "See more"}
           </button>
         </div>
       )}

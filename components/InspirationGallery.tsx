@@ -10,44 +10,213 @@ gsap.registerPlugin(ScrollTrigger);
 
 const images = [
   {
-    src: "/img/thai-street.jpg",
-    alt: "Street food in Thailand",
-    label: "Food - Thailand",
+    src: "/img/tokyo-cross.jpg",
+    alt: "Shibuya Crossing in Tokyo",
+    label: "City - Japan (Tokyo)",
   },
   {
-    src: "/img/mexico-street.png",
-    alt: "Traditional dance in Mexico",
-    label: "Culture - Mexico",
+    src: "/img/kyoto-temple.jpg",
+    alt: "Temple in Kyoto",
+    label: "Culture - Japan (Kyoto)",
   },
   {
-    src: "/img/morocco-street.jpg",
-    alt: "Market in Morocco",
-    label: "Market - Morocco",
+    src: "/img/osaka-food.jpg",
+    alt: "Food stalls in Osaka",
+    label: "Food - Japan (Osaka)",
+  },
+
+  {
+    src: "/img/swiss-zurich.jpg",
+    alt: "Cityscape in Zurich",
+    label: "City - Switzerland (Zurich)",
   },
   {
-    src: "/img/pakistan-street.avif",
-    alt: "Playing children",
-    label: "People - Pakistan",
+    src: "/img/swiss-alps.jpg",
+    alt: "Alpine view in Zermatt",
+    label: "Nature - Switzerland (Zermatt)",
   },
   {
-    src: "/img/senegal-street.jpg",
-    alt: "Street life in Senegal",
-    label: "Street Life - Senegal",
+    src: "/img/swiss-fondu.jpg",
+    alt: "Fondue in Geneva",
+    label: "Food - Switzerland (Geneva)",
   },
   {
-    src: "/img/japan-street.webp",
-    alt: "Ceremony of tea in Japan",
-    label: "Tradition - Japan",
+    src: "/img/germany-streetart.jpg",
+    alt: "Street art in Berlin",
+    label: "Culture - Germany (Berlin)",
   },
   {
-    src: "/img/vietnam-street.jpg",
-    alt: "Street vendors in Vietnam",
-    label: "Market - Vietnam",
+    src: "/img/germany-hamburg.jpg",
+    alt: "Port of Hamburg",
+    label: "City - Germany (Hamburg)",
+  },
+
+  {
+    src: "/img/canada-oldmontreal.jpg",
+    alt: "Old Montreal",
+    label: "City - Canada (Montreal)",
   },
   {
-    src: "/img/nepal-street.jpg",
-    alt: "Local family in Nepal",
-    label: "Life - Nepal",
+    src: "/img/canada-vancouver.jpg",
+    alt: "Nature near Vancouver",
+    label: "Nature - Canada (Vancouver)",
+  },
+  {
+    src: "/img/canada-toronto.png",
+    alt: "Street food in Toronto",
+    label: "Food - Canada (Toronto)",
+  },
+
+  {
+    src: "/img/maldives-bungalow.jpg",
+    alt: "Overwater bungalow",
+    label: "Relax - Maldives",
+  },
+  {
+    src: "/img/maldives-diving.jpg",
+    alt: "Diving in clear waters",
+    label: "Adventure - Maldives",
+  },
+  {
+    src: "/img/maldives-sunset.jpg",
+    alt: "Sunset on the beach",
+    label: "View - Maldives",
+  },
+
+  {
+    src: "/img/borabora-lagoon.jpg",
+    alt: "Lagoon view",
+    label: "Nature - Bora Bora",
+  },
+  {
+    src: "/img/borabora-paddle.jpg",
+    alt: "Paddle board in turquoise water",
+    label: "Relax - Bora Bora",
+  },
+  {
+    src: "/img/borabora-hut.jpg",
+    alt: "Traditional hut",
+    label: "Culture - Bora Bora",
+  },
+
+  {
+    src: "/img/tulum-beach.jpg",
+    alt: "Beach in Tulum",
+    label: "Relax - Tulum",
+  },
+  { src: "/img/tulum-ruins.jpg", alt: "Mayan ruins", label: "Culture - Tulum" },
+  {
+    src: "/img/tulum-food.jpg",
+    alt: "Street food in Tulum",
+    label: "Food - Tulum",
+  },
+
+  {
+    src: "/img/bali-rice.jpg",
+    alt: "Rice fields in Ubud",
+    label: "Nature - Bali (Ubud)",
+  },
+
+  { src: "/img/bali-beach.jpg", alt: "Beach at sunset", label: "Relax - Bali" },
+
+  {
+    src: "/img/time-square.jpg",
+    alt: "Times Square",
+    label: "City - New York (Manhattan)",
+  },
+  {
+    src: "/img/nyc-central.jpg",
+    alt: "Central Park",
+    label: "Nature - New York (Manhattan)",
+  },
+  {
+    src: "/img/nyc-food.jpg",
+    alt: "Hot dog stand",
+    label: "Food - New York (Brooklyn)",
+  },
+
+  {
+    src: "/img/paris-eiffel.jpg",
+    alt: "Eiffel Tower",
+    label: "Landmark - Paris",
+  },
+  {
+    src: "/img/paris-louvre.jpg",
+    alt: "Louvre Museum",
+    label: "Culture - Paris",
+  },
+  { src: "/img/paris-bakery.jpg", alt: "French bakery", label: "Food - Paris" },
+
+  {
+    src: "/img/sydney-opera.jpg",
+    alt: "Opera House",
+    label: "Landmark - Sydney",
+  },
+  {
+    src: "/img/sydney-harbour.jpg",
+    alt: "Sydney Harbour Bridge",
+    label: "View - Sydney",
+  },
+  { src: "/img/sydney-beach.jpg", alt: "Bondi Beach", label: "Relax - Sydney" },
+
+  {
+    src: "/img/marrakesh-souk.jpg",
+    alt: "Souk in Marrakech",
+    label: "Market - Morocco (Marrakech)",
+  },
+  {
+    src: "/img/chefcha.jpg",
+    alt: "Blue city",
+    label: "Color - Morocco (Chefchaouen)",
+  },
+  {
+    src: "/img/Moroccan-Food.jpg",
+    alt: "Moroccan Food",
+    label: "Food - Morocco (Casablanca)",
+  },
+
+  {
+    src: "/img/chile-atacama.jpg",
+    alt: "Atacama Desert",
+    label: "Nature - Chile",
+  },
+  {
+    src: "/img/chile-santiago.jpg",
+    alt: "Cityscape of Santiago",
+    label: "City - Chile (Santiago)",
+  },
+  {
+    src: "/img/chile-patagonia.jpg",
+    alt: "Patagonian mountains",
+    label: "Hiking - Chile (Patagonia)",
+  },
+
+  { src: "/img/jordan-petra.jpg", alt: "Petra", label: "Wonder - Jordan" },
+  {
+    src: "/img/jordan-desert.jpg",
+    alt: "Wadi Rum desert",
+    label: "Nature - Jordan",
+  },
+  {
+    src: "/img/jordan-amman.jpg",
+    alt: "Streets of Amman",
+    label: "City - Jordan (Amman)",
+  },
+
+  {
+    src: "/img/california-coast.jpg",
+    alt: "Highway 1 coast",
+    label: "View - California (Big Sur)",
+  },
+  {
+    src: "/img/california-hollywood.jpg",
+    alt: "Hollywood sign",
+    label: "Culture - California (LA)",
+  },
+  {
+    src: "/img/california-sf.jpg",
+    alt: "Golden Gate Bridge",
+    label: "Landmark - California (SF)",
   },
 ];
 
@@ -59,10 +228,11 @@ type RandomStyle = {
 export default function InspirationGallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [randomStyles, setRandomStyles] = useState<RandomStyle[]>([]);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const styles: RandomStyle[] = images.map(() => ({
-      rotate: (Math.random() - 0.5) * 6,
+      rotate: (Math.random() - 0.5) * 43,
       translateY: Math.random() * 10 - 5,
     }));
     setRandomStyles(styles);
@@ -74,31 +244,34 @@ export default function InspirationGallery() {
     const title = containerRef.current.querySelector(".gallery-title");
     const items = containerRef.current.querySelectorAll(".media-item");
 
-    gsap.set(title, { opacity: 0, y: 40 });
-    gsap.set(items, { opacity: 0, scale: 0.96 });
+    gsap.set(title, { opacity: 0 });
+    gsap.set(items, { opacity: 0 });
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top 70%",
+      start: "top 40%",
       once: true,
       onEnter: () => {
         gsap.to(title, {
           opacity: 1,
-          y: 0,
           duration: 1,
-          ease: "power2.out",
+          ease: "power1.out",
         });
 
         gsap.to(items, {
           opacity: 1,
-          scale: 1,
-          duration: 0.9,
-          ease: "power2.out",
-          stagger: 0.07,
+          duration: 1.2,
+          ease: "power1.out",
+          stagger: {
+            each: 0.1,
+            from: "start",
+          },
         });
       },
     });
-  }, [randomStyles]);
+  }, [randomStyles, showAll]);
+
+  const visibleImages = showAll ? images : images.slice(0, 12);
 
   return (
     <section className="relative z-50 py-20 px-4 bg-white" ref={containerRef}>
@@ -107,7 +280,7 @@ export default function InspirationGallery() {
       </h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center max-w-6xl mx-auto">
-        {images.map((img, index) => {
+        {visibleImages.map((img, index) => {
           const style = randomStyles[index] || { rotate: 0, translateY: 0 };
 
           return (
@@ -116,7 +289,7 @@ export default function InspirationGallery() {
               className="media-item w-64 h-40 relative rounded-xl overflow-hidden shadow-md transition-transform duration-500 ease-in-out hover:scale-105 hover:z-10"
               style={{
                 transform: `rotate(${style.rotate}deg) translateY(${style.translateY}px)`,
-                willChange: "opacity, transform",
+                willChange: "opacity",
               }}
             >
               <Image
@@ -133,6 +306,17 @@ export default function InspirationGallery() {
           );
         })}
       </div>
+
+      {!showAll && (
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => setShowAll(true)}
+            className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
+          >
+            see more
+          </button>
+        </div>
+      )}
     </section>
   );
 }

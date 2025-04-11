@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -231,7 +232,7 @@ export default function InspirationGallery() {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    const styles: RandomStyle[] = images.map(() => ({
+    const styles = images.map(() => ({
       rotate: (Math.random() - 0.5) * 43,
       translateY: Math.random() * 10 - 5,
     }));
@@ -269,7 +270,7 @@ export default function InspirationGallery() {
         });
       },
     });
-  }, [randomStyles, showAll]);
+  }, [randomStyles]);
 
   const visibleImages = showAll ? images : images.slice(0, 12);
 
@@ -309,12 +310,18 @@ export default function InspirationGallery() {
 
       {images.length > 12 && (
         <div className="flex justify-center mt-10">
-          <button
+          <span
             onClick={() => setShowAll((prev) => !prev)}
-            className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
+            className="inline-flex items-center gap-2 text-sm sm:text-base text-black cursor-pointer hover:opacity-70 transition-opacity duration-300 group"
           >
             {showAll ? "Show less" : "See more"}
-          </button>
+            <ChevronDown
+              className={`transition-transform duration-500 group-hover:opacity-80 ${
+                showAll ? "rotate-180" : ""
+              }`}
+              size={18}
+            />
+          </span>
         </div>
       )}
     </section>

@@ -55,7 +55,7 @@ export default function HeroSection() {
     });
 
     gsap.to(curtainRef.current, {
-      yPercent: 100,
+      xPercent: 100,
       duration: 3,
       ease: "power4.inOut",
       delay: 1.6,
@@ -81,7 +81,7 @@ export default function HeroSection() {
 
     gsap.from(titleRef.current, {
       opacity: 1,
-      y: 550,
+      x: -1100,
       duration: 1.2,
       ease: "power4.out",
       delay: 3,
@@ -89,13 +89,13 @@ export default function HeroSection() {
 
     gsap.fromTo(
       subtitleRef.current,
-      { opacity: 0, y: 20 },
+      { opacity: 0, x: -1100 },
       {
         opacity: 1,
-        y: 0,
+        x: 0,
         duration: 1.2,
         ease: "power4.out",
-        delay: 3.3,
+        delay: 3.2,
       }
     );
 
@@ -119,7 +119,7 @@ export default function HeroSection() {
         width: "100%",
         duration: 1.2,
         ease: "power4.out",
-        delay: 3.6,
+        delay: 4,
       }
     );
   }, []);
@@ -131,7 +131,7 @@ export default function HeroSection() {
     >
       <div
         ref={curtainRef}
-        className="absolute inset-0 bg-black z-50 flex flex-col justify-center items-center"
+        className="absolute inset-0 bg-black/80 z-50 flex flex-col justify-center items-center backdrop-blur-xs"
       >
         <Image
           ref={logoRef}

@@ -33,7 +33,7 @@ export default function SectionTransition() {
   return (
     <div
       ref={overlayRef}
-      className="w-full bg-gradient-to-b from-[#f0f4f8] to-white fixed bottom-0 left-0 z-20 pointer-events-none"
+      className="w-full bg-gradient-to-b from-[#f5f5f5] to-[#ffffff] fixed bottom-0 left-0 z-20 pointer-events-none"
     />
   );
 }

@@ -17,10 +17,14 @@ body {
   background-color: #f9f9f9;
 }
 
-.image-card {
-  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+.title-font {
+  font-family: "Broaek-Outline", sans-serif;
 }
 
 @theme {
   --color-sky: #e3eeff;
+}
+
+.image-card {
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 }

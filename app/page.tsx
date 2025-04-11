@@ -12,7 +12,7 @@ import PlaneRevealSection from "@/components/PlaneRevealSection";
 import FlightIntro from "@/components/FlightIntro";
 import ChoiceSection from "@/components/ChoiceSection";
 import WorldMap from "@/components/WorldMap";
-// import CulturalSection from "@/components/CulturalSection";
+import InspirationGallery from "@/components/InspirationGallery";
 import BreakSection from "@/components/BreakSection";
 
 export default function Home() {
@@ -33,7 +33,7 @@ export default function Home() {
       <ChoiceSection />
       <WorldMap />
       <BreakSection />
-      {/* <CulturalSection /> */}
+      <InspirationGallery />
     </div>
   );
 }

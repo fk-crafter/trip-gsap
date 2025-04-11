@@ -15,9 +15,27 @@ export default function HeroSection() {
   const buttonRef = useRef(null);
   const videoRef = useRef(null);
   const curtainRef = useRef(null);
+  const logoRef = useRef(null);
   const loadingRef = useRef(null);
   const lineRef = useRef(null);
+
   useGSAP(() => {
+    gsap.to(logoRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.2,
+    });
+
+    gsap.to(loadingRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.4,
+    });
+
     gsap.to(".hero-logo", {
       scale: 1.05,
       opacity: 0.9,
@@ -40,20 +58,16 @@ export default function HeroSection() {
       yPercent: 100,
       duration: 3,
       ease: "power4.inOut",
-      delay: 0.5,
+      delay: 1.6,
     });
 
-    gsap.to(
-      videoRef.current,
-
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 4,
-        ease: "power2.out",
-        delay: 0.6,
-      }
-    );
+    gsap.to(videoRef.current, {
+      scale: 1,
+      opacity: 1,
+      duration: 4,
+      ease: "power2.out",
+      delay: 0.6,
+    });
 
     gsap.to(heroContainerRef.current, {
       scrollTrigger: {
@@ -67,7 +81,7 @@ export default function HeroSection() {
 
     gsap.from(titleRef.current, {
       opacity: 1,
-      y: 500,
+      y: 550,
       duration: 1.2,
       ease: "power4.out",
       delay: 3,
@@ -120,19 +134,22 @@ export default function HeroSection() {
         className="absolute inset-0 bg-black z-50 flex flex-col justify-center items-center"
       >
         <Image
+          ref={logoRef}
           src="/img/logo.png"
           alt="Logo"
-          className="w-80 h-40 mb-4 invert hero-logo"
+          className="w-80 h-40 mb-4 invert hero-logo opacity-0 translate-y-10"
           width={300}
           height={300}
         />
+
         <p
           ref={loadingRef}
-          className="text-white text-lg tracking-wider font-light mt-2 uppercase"
+          className="text-white text-lg tracking-wider font-bold mt-2 uppercase opacity-0 translate-y-10"
         >
           Loading
         </p>
       </div>
+
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover z-0"
@@ -143,7 +160,8 @@ export default function HeroSection() {
         src="/bg2.mp4"
       />
 
-      <div className="absolute inset-0 bg-opacity-40 z-1" />
+      <div className="absolute inset-0 bg-black/40 z-1" />
+
       <div className="relative z-10 px-6">
         <h1
           ref={titleRef}
@@ -170,7 +188,7 @@ export default function HeroSection() {
             (label, index) => (
               <button
                 key={index}
-                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border  bg-black/50 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
+                className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border bg-black/50 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
               >
                 {label}
               </button>

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,34 +69,40 @@ export default function InspirationGallery() {
   }, []);
 
   useGSAP(() => {
-    if (randomStyles.length > 0 && containerRef.current) {
-      const items = containerRef.current.querySelectorAll(".media-item");
+    if (!containerRef.current) return;
 
-      gsap.set(items, {
-        opacity: 0,
-        filter: "blur(6px)",
-      });
+    const title = containerRef.current.querySelector(".gallery-title");
+    const items = containerRef.current.querySelectorAll(".media-item");
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top 40%",
-        once: true,
-        onEnter: () => {
-          gsap.to(items, {
-            opacity: 1,
-            filter: "blur(0px)",
-            duration: 1.2,
-            ease: "power1.inOut",
-            stagger: 0.05,
-          });
-        },
-      });
-    }
+    gsap.set(title, { opacity: 0, y: 40 });
+    gsap.set(items, { opacity: 0, scale: 0.96 });
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 70%",
+      once: true,
+      onEnter: () => {
+        gsap.to(title, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        });
+
+        gsap.to(items, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.07,
+        });
+      },
+    });
   }, [randomStyles]);
 
   return (
     <section className="relative z-50 py-20 px-4 bg-white" ref={containerRef}>
-      <h2 className="text-4xl font-bold text-center mb-12 z-10 relative">
+      <h2 className="gallery-title text-4xl font-bold text-center mb-12 z-10 relative">
         Moments of the World
       </h2>
 
@@ -109,12 +116,15 @@ export default function InspirationGallery() {
               className="media-item w-64 h-40 relative rounded-xl overflow-hidden shadow-md transition-transform duration-500 ease-in-out hover:scale-105 hover:z-10"
               style={{
                 transform: `rotate(${style.rotate}deg) translateY(${style.translateY}px)`,
+                willChange: "opacity, transform",
               }}
             >
-              <img
+              <Image
                 src={img.src}
                 alt={img.alt}
                 className="w-full h-full object-cover"
+                fill
+                loading="lazy"
               />
               <div className="absolute bottom-0 left-0 w-full bg-black/50 text-white text-sm p-2">
                 {img.label}

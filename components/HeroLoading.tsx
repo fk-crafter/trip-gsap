@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
 
 type Props = {
   onComplete?: () => void;
@@ -14,9 +15,10 @@ export default function HeroLoading({ onComplete }: Props) {
   const counterRef = useRef(null);
   const curtainRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const countObj = { value: 0 };
 
+    // Apparition du logo + compteur
     gsap.to([logoRef.current, counterRef.current], {
       opacity: 1,
       y: 0,
@@ -25,6 +27,7 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.2,
     });
 
+    // Apparition du texte "Loading"
     gsap.to(loadingRef.current, {
       opacity: 1,
       y: 0,
@@ -33,24 +36,27 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.4,
     });
 
-    gsap.to(".hero-logo", {
-      scale: 1.05,
-      opacity: 0.9,
-      duration: 2.5,
-      ease: "sine.inOut",
+    // Nouveau loop sur le logo : rotation lente + léger scale
+    gsap.to(logoRef.current, {
+      rotate: 2,
+      scale: 1.02,
       yoyo: true,
       repeat: -1,
+      duration: 3,
+      ease: "sine.inOut",
     });
 
+    // Nouveau loop sur le texte "Loading" : pulsation douce
     gsap.to(loadingRef.current, {
-      scale: 1.05,
-      opacity: 0.3,
-      duration: 1.6,
-      ease: "sine.inOut",
-      repeat: -1,
+      opacity: 0.5,
+      scale: 1.03,
       yoyo: true,
+      repeat: -1,
+      duration: 1.8,
+      ease: "sine.inOut",
     });
 
+    // Compteur de 0 à 100%
     gsap.to(countObj, {
       value: 100,
       duration: 3.5,
@@ -65,6 +71,7 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.6,
     });
 
+    // Fermeture du loader
     gsap.to(curtainRef.current, {
       xPercent: 100,
       duration: 3,
@@ -90,9 +97,9 @@ export default function HeroLoading({ onComplete }: Props) {
         </span>
         <Image
           ref={logoRef}
-          src="/img/logo.png"
+          src="/logo.png"
           alt="Logo"
-          className="w-80 h-40 invert hero-logo opacity-0 translate-y-10"
+          className="w-96 h-72 hero-logo opacity-0 translate-y-10"
           width={300}
           height={300}
         />

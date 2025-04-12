@@ -18,8 +18,17 @@ export default function HeroSection() {
   const logoRef = useRef(null);
   const loadingRef = useRef(null);
   const lineRef = useRef(null);
+  const counterRef = useRef(null);
 
   useGSAP(() => {
+    gsap.to(counterRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.2,
+    });
+
     gsap.to(logoRef.current, {
       opacity: 1,
       y: 0,
@@ -54,11 +63,26 @@ export default function HeroSection() {
       yoyo: true,
     });
 
+    let countObj = { value: 0 };
+    gsap.to(countObj, {
+      value: 100,
+      duration: 3.5,
+      ease: "power1.inOut",
+      onUpdate: () => {
+        if (counterRef.current) {
+          (counterRef.current as HTMLElement).textContent = `${Math.round(
+            countObj.value
+          )}%`;
+        }
+      },
+      delay: 0.6,
+    });
+
     gsap.to(curtainRef.current, {
       xPercent: 100,
       duration: 3,
       ease: "power4.inOut",
-      delay: 1.6,
+      delay: 4.4,
     });
 
     gsap.to(videoRef.current, {
@@ -84,7 +108,7 @@ export default function HeroSection() {
       x: -1100,
       duration: 1.2,
       ease: "power4.out",
-      delay: 3,
+      delay: 5.4,
     });
 
     gsap.fromTo(
@@ -95,7 +119,7 @@ export default function HeroSection() {
         x: 0,
         duration: 1.2,
         ease: "power4.out",
-        delay: 3.2,
+        delay: 5.6,
       }
     );
 
@@ -107,7 +131,7 @@ export default function HeroSection() {
         scale: 1,
         duration: 1.2,
         ease: "power4.out",
-        delay: 3.6,
+        delay: 6.0,
       }
     );
 
@@ -119,7 +143,7 @@ export default function HeroSection() {
         width: "100%",
         duration: 1.2,
         ease: "power4.out",
-        delay: 4,
+        delay: 6.4,
       }
     );
   }, []);
@@ -133,14 +157,25 @@ export default function HeroSection() {
         ref={curtainRef}
         className="absolute inset-0 bg-black/80 z-50 flex flex-col justify-center items-center backdrop-blur-xs"
       >
-        <Image
-          ref={logoRef}
-          src="/img/logo.png"
-          alt="Logo"
-          className="w-80 h-40 mb-4 invert hero-logo opacity-0 translate-y-10"
-          width={300}
-          height={300}
-        />
+        <div className="relative w-[320px] flex items-center justify-center mb-4">
+          {/* Counter à gauche (position absolue) */}
+          <span
+            ref={counterRef}
+            className="absolute left-[-60px] text-white text-xl font-bold opacity-0 translate-y-10"
+          >
+            0%
+          </span>
+
+          {/* Logo centré */}
+          <Image
+            ref={logoRef}
+            src="/img/logo.png"
+            alt="Logo"
+            className="w-80 h-40 invert hero-logo opacity-0 translate-y-10"
+            width={300}
+            height={300}
+          />
+        </div>
 
         <p
           ref={loadingRef}

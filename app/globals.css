@@ -30,6 +30,8 @@ body {
   clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
+/* world map animation */
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -43,4 +45,14 @@ body {
 
 .animate-fade-in {
   animation: fade-in 0.4s ease-out forwards;
+}
+
+/* inspiration gallery animation */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -105,13 +105,13 @@ export default function WorldMap() {
                   geography={geo}
                   style={{
                     default: {
-                      fill: "#e0e0e0",
-                      stroke: "#ffffff",
-                      strokeWidth: 0.3,
+                      fill: "#f5f5f5",
+                      stroke: "#d6d6d6",
+                      strokeWidth: 0.5,
                       outline: "none",
                     },
                     hover: {
-                      fill: "#b0bec5",
+                      fill: "#d1e3ff",
                       outline: "none",
                     },
                   }}
@@ -127,13 +127,14 @@ export default function WorldMap() {
               onClick={() => setSelected(dest)}
               style={{ cursor: "pointer" }}
             >
-              <circle r={6} fill="#2563eb" />
+              <circle r={5} fill="#0ea5e9" stroke="white" strokeWidth={1.5} />
               <text
                 textAnchor="middle"
-                y={-10}
+                y={-12}
                 style={{
-                  fontSize: "10px",
-                  fill: "#333",
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  fill: "#1e293b",
                   pointerEvents: "none",
                 }}
               >
@@ -144,40 +145,40 @@ export default function WorldMap() {
         </ZoomableGroup>
       </ComposableMap>
 
-      <div className="absolute top-5 right-5 flex flex-col gap-2 z-30">
+      <div className="absolute top-6 right-6 flex flex-col gap-2 z-30">
         <button
           onClick={() => setZoom((z) => Math.min(z + 0.5, 4))}
-          className="bg-white text-black px-3 py-1 rounded shadow hover:bg-gray-100"
+          className="bg-white text-black w-10 h-10 rounded-full shadow-md hover:bg-gray-100 transition-all duration-200"
         >
           +
         </button>
         <button
           onClick={() => setZoom((z) => Math.max(z - 0.5, 1))}
-          className="bg-white text-black px-3 py-1 rounded shadow hover:bg-gray-100"
+          className="bg-white text-black w-10 h-10 rounded-full shadow-md hover:bg-gray-100 transition-all duration-200"
         >
           −
         </button>
       </div>
 
       {selected && (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-lg p-4 flex items-center gap-4 max-w-md z-20 border">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white shadow-lg rounded-xl p-5 flex items-center gap-5 max-w-md z-30 border border-gray-200 animate-fade-in">
           <Image
             src={selected.image}
             alt={selected.name}
-            width={80}
-            height={80}
-            className="rounded-md object-cover w-20 h-20"
+            width={90}
+            height={90}
+            className="rounded-lg object-cover w-[90px] h-[90px]"
           />
           <div>
-            <h3 className="text-xl font-semibold text-gray-800">
+            <h3 className="text-2xl font-semibold text-gray-800">
               {selected.name}
             </h3>
           </div>
           <button
             onClick={() => setSelected(null)}
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800 transition-colors cursor-pointer"
+            className="absolute cursor-pointer top-3 right-3 text-gray-400 hover:text-gray-700 transition-colors"
           >
-            <X size={18} />
+            <X size={20} />
           </button>
         </div>
       )}

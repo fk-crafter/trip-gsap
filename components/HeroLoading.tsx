@@ -18,7 +18,6 @@ export default function HeroLoading({ onComplete }: Props) {
   useGSAP(() => {
     const countObj = { value: 0 };
 
-    // Apparition du logo + compteur
     gsap.to([logoRef.current, counterRef.current], {
       opacity: 1,
       y: 0,
@@ -27,7 +26,6 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.2,
     });
 
-    // Apparition du texte "Loading"
     gsap.to(loadingRef.current, {
       opacity: 1,
       y: 0,
@@ -36,7 +34,6 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.4,
     });
 
-    // Nouveau loop sur le logo : rotation lente + léger scale
     gsap.to(logoRef.current, {
       rotate: 2,
       scale: 1.02,
@@ -46,7 +43,6 @@ export default function HeroLoading({ onComplete }: Props) {
       ease: "sine.inOut",
     });
 
-    // Nouveau loop sur le texte "Loading" : pulsation douce
     gsap.to(loadingRef.current, {
       opacity: 0.5,
       scale: 1.03,
@@ -56,7 +52,6 @@ export default function HeroLoading({ onComplete }: Props) {
       ease: "sine.inOut",
     });
 
-    // Compteur de 0 à 100%
     gsap.to(countObj, {
       value: 100,
       duration: 3.5,
@@ -71,7 +66,6 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.6,
     });
 
-    // Fermeture du loader
     gsap.to(curtainRef.current, {
       xPercent: 100,
       duration: 3,

@@ -14,6 +14,7 @@ import ChoiceSection from "@/components/ChoiceSection";
 import WorldMap from "@/components/WorldMap";
 import InspirationGallery from "@/components/InspirationGallery";
 import BreakSection from "@/components/BreakSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       <WorldMap />
       <BreakSection />
       <InspirationGallery />
+      <Footer />
     </div>
   );
 }

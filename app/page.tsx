@@ -15,6 +15,7 @@ import WorldMap from "@/components/WorldMap";
 import InspirationGallery from "@/components/InspirationGallery";
 import BreakSection from "@/components/BreakSection";
 import Footer from "@/components/Footer";
+import TravelTips from "@/components/TravelTips";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
       <WorldMap />
       <BreakSection />
       <InspirationGallery />
+      <TravelTips />
       <Footer />
     </div>
   );

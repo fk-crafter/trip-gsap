@@ -7,7 +7,7 @@ import {
 import Image from "next/image";
 export default function Footer() {
   return (
-    <footer className="bg-[#F4A261] z-50 min-h-screen text-white px-10 py-16 flex flex-col justify-between">
+    <footer className=" z-50 min-h-screen text-black px-10 py-16 flex flex-col justify-between">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
           <h2 className="text-5xl font-light mb-12">
@@ -29,11 +29,11 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full bg-transparent border-b border-white placeholder-white text-white px-2 py-2 focus:outline-none mb-4"
+              className="w-full bg-transparent border-b border-black placeholder-black text-black px-2 py-2 focus:outline-none mb-4"
             />
             <button
               type="submit"
-              className="border border-white px-8 py-2 rounded-full hover:bg-white hover:text-[#EF4136] transition"
+              className="border border-black px-8 py-2 rounded-full hover:bg-black hover:text-white transition"
             >
               Stay in the loop
             </button>

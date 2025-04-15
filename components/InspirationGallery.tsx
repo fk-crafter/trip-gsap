@@ -282,16 +282,16 @@ export default function InspirationGallery() {
   const visibleImages = showAll ? images : images.slice(0, 12);
 
   return (
-    <section className="relative z-50 py-20 px-4 bg-white" ref={containerRef}>
-      <h2 className="gallery-title text-4xl font-bold text-center mb-12 z-10 relative">
+    <section className="relative z-50 py-20 px-4 bg-gray-50" ref={containerRef}>
+      <h2 className="gallery-title text-5xl font-semibold text-center mb-16 text-gray-800 tracking-tight">
         Moments of the World
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center max-w-6xl mx-auto">
         {visibleImages.map((img, index) => (
           <div
             key={index}
-            className="media-item w-64 h-40 relative rounded-xl overflow-hidden shadow-md transition-transform duration-500 ease-in-out hover:scale-110 hover:rotate-1 hover:z-10 group"
+            className="media-item w-64 h-44 relative rounded-2xl overflow-hidden transition-transform duration-500 ease-in-out hover:scale-105 group bg-white shadow-sm"
             style={{
               transform: "none",
               willChange: "opacity",
@@ -300,11 +300,11 @@ export default function InspirationGallery() {
             <Image
               src={img.src}
               alt={img.alt}
-              className="w-full h-full object-cover group-hover:brightness-75 transition-all duration-500"
+              className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-75"
               fill
               loading="lazy"
             />
-            <div className="absolute bottom-0 left-0 w-full bg-black/80 text-white text-sm p-2 transition-all duration-500 group-hover:bg-black/60 group-hover:backdrop-blur-sm">
+            <div className="absolute bottom-0 left-0 w-full bg-black/70 text-white text-sm p-2 px-3 group-hover:bg-black/50 backdrop-blur-sm">
               {img.label}
             </div>
           </div>
@@ -312,17 +312,17 @@ export default function InspirationGallery() {
       </div>
 
       {images.length > 12 && (
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-12">
           <span
             onClick={() => setShowAll((prev) => !prev)}
-            className="inline-flex items-center gap-2 text-sm sm:text-base text-black cursor-pointer hover:opacity-70 transition-opacity duration-300 group"
+            className="inline-flex items-center gap-2 text-base text-gray-700 cursor-pointer hover:text-black transition-colors group"
           >
             {showAll ? "Show less" : "See more"}
             <ChevronDown
               className={`transition-transform duration-500 group-hover:opacity-80 ${
                 showAll ? "rotate-180" : ""
               }`}
-              size={18}
+              size={20}
             />
           </span>
         </div>

@@ -3,22 +3,48 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Image from "next/image";
-import { useGSAP } from "@gsap/react";
 
 type Props = {
   onComplete?: () => void;
 };
 
 export default function HeroLoading({ onComplete }: Props) {
-  const logoRef = useRef(null);
-  const loadingRef = useRef(null);
-  const counterRef = useRef(null);
   const curtainRef = useRef(null);
+  const stackRef = useRef<HTMLDivElement[]>([]);
+  const counterRef = useRef<HTMLSpanElement | null>(null);
+  const loadingTextRef = useRef<HTMLParagraphElement | null>(null);
 
-  useGSAP(() => {
+  const rotations = useRef<number[]>([]);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
     const countObj = { value: 0 };
 
-    gsap.to([logoRef.current, counterRef.current], {
+    stackRef.current.forEach((el, i) => {
+      const angle = gsap.utils.random(-6, 6);
+      rotations.current[i] = angle;
+
+      gsap.set(el, {
+        y: 150,
+        opacity: 0,
+        rotate: angle - 15,
+        zIndex: i,
+      });
+
+      tl.to(
+        el,
+        {
+          y: 0,
+          opacity: 1,
+          rotate: angle,
+          duration: 1,
+          ease: "back.out(1.7)",
+        },
+        i * 0.6
+      );
+    });
+
+    gsap.to([counterRef.current, loadingTextRef.current], {
       opacity: 1,
       y: 0,
       duration: 1.2,
@@ -26,81 +52,82 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.2,
     });
 
-    gsap.to(loadingRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power3.out",
-      delay: 0.4,
-    });
-
-    gsap.to(logoRef.current, {
-      rotate: 2,
-      scale: 1.02,
-      yoyo: true,
-      repeat: -1,
-      duration: 3,
-      ease: "sine.inOut",
-    });
-
-    gsap.to(loadingRef.current, {
-      opacity: 0.5,
-      scale: 1.03,
-      yoyo: true,
-      repeat: -1,
-      duration: 1.8,
-      ease: "sine.inOut",
-    });
-
     gsap.to(countObj, {
       value: 100,
-      duration: 3.5,
+      duration: 4.5,
       ease: "power1.inOut",
       onUpdate: () => {
         if (counterRef.current) {
-          (counterRef.current as HTMLElement).textContent = `${Math.round(
-            countObj.value
-          )}%`;
+          counterRef.current.textContent = `${Math.round(countObj.value)}%`;
         }
       },
-      delay: 0.6,
     });
 
-    gsap.to(curtainRef.current, {
-      xPercent: 100,
-      duration: 3,
-      ease: "power4.inOut",
-      delay: 4.4,
-      onComplete: () => {
-        if (onComplete) onComplete();
+    tl.to({}, { duration: 1.5 });
+
+    tl.to(
+      stackRef.current[3],
+      {
+        scale: 2,
+        duration: 1.8,
+        ease: "power4.inOut",
       },
-    });
+      "+=0.2"
+    );
+
+    tl.to(
+      curtainRef.current,
+      {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.inOut",
+        onComplete: () => {
+          if (onComplete) onComplete();
+        },
+      },
+      "-=1"
+    );
   }, [onComplete]);
 
   return (
     <div
       ref={curtainRef}
-      className="absolute inset-0 bg-black/80 z-50 flex flex-col justify-center items-center backdrop-blur-xs"
+      className="fixed inset-0 bg-black z-[999] flex flex-col justify-center items-center"
     >
-      <div className="relative w-[320px] flex items-center justify-center mb-4">
+      <div className="relative w-[420px] h-[260px] mb-6">
+        {["kyoto.jpg", "kyoto.jpg", "kyoto.jpg", "thumbnail.png"].map(
+          (src, i) => (
+            <div
+              key={i}
+              ref={(el) => {
+                if (el) {
+                  stackRef.current[i] = el;
+                }
+              }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={`/img/${src}`}
+                alt={`Image ${i}`}
+                fill
+                className="object-cover rounded-lg shadow-2xl"
+              />
+            </div>
+          )
+        )}
+      </div>
+
+      <div className="relative w-[320px] flex items-center justify-center mb-2">
         <span
           ref={counterRef}
           className="absolute left-[-60px] text-white text-xl font-bold opacity-0 translate-y-10"
         >
           0%
         </span>
-        <Image
-          ref={logoRef}
-          src="/logo.png"
-          alt="Logo"
-          className="w-96 h-72 hero-logo opacity-0 translate-y-10"
-          width={300}
-          height={300}
-        />
       </div>
 
       <p
-        ref={loadingRef}
+        ref={loadingTextRef}
         className="text-white text-lg tracking-wider font-bold mt-2 uppercase opacity-0 translate-y-10"
       >
         Loading

@@ -15,6 +15,7 @@ import WorldMap from "@/components/WorldMap";
 import InspirationGallery from "@/components/InspirationGallery";
 import BreakSection from "@/components/BreakSection";
 import WhatInMyBag from "@/components/WhatInMyBag";
+import ReflectionsSection from "@/components/ReflectionsSection";
 import TravelTips from "@/components/TravelTips";
 import Footer from "@/components/Footer";
 
@@ -38,6 +39,7 @@ export default function Home() {
       <BreakSection />
       <InspirationGallery />
       <WhatInMyBag />
+      <ReflectionsSection />
       <TravelTips />
       <Footer />
     </div>

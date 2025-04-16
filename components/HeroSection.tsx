@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,13 +9,30 @@ import HeroLoading from "./HeroLoading";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const buttonRef = useRef(null);
   const lineRef = useRef(null);
   const videoRef = useRef(null);
   const [loadingDone, setLoadingDone] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      const rect = heroRef.current?.getBoundingClientRect();
+      const inView = rect && rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (inView) {
+        setShowLoader(true);
+      } else {
+        setLoadingDone(true);
+      }
+    };
+
+    window.addEventListener("load", handleLoad);
+    return () => window.removeEventListener("load", handleLoad);
+  }, []);
 
   useGSAP(
     () => {
@@ -76,9 +93,9 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative flex flex-col justify-center items-center h-screen text-center text-white  overflow-hidden"
+      className="relative flex flex-col justify-center items-center h-screen text-center text-white overflow-hidden"
     >
-      {!loadingDone && <HeroLoading onComplete={() => setLoadingDone(true)} />}
+      {showLoader && <HeroLoading onComplete={() => setLoadingDone(true)} />}
 
       <video
         ref={videoRef}
@@ -94,7 +111,7 @@ export default function HeroSection() {
         <div className="relative z-20 px-6">
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl font-extrabold uppercase "
+            className="text-5xl md:text-7xl font-extrabold uppercase"
           >
             Explore The World
           </h1>

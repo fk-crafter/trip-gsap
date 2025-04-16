@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { Mountain, Sun, Snowflake, Plane } from "lucide-react";
 
@@ -53,43 +53,45 @@ const kits = [
 ];
 
 export default function WhatInMyBag() {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useGSAP(() => {
-    const kitSections = sectionRef.current?.querySelectorAll(".kit");
+    const kitsEls = sectionRef.current?.querySelectorAll(".kit");
 
-    kitSections?.forEach((kit) => {
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 80 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+
+    kitsEls?.forEach((kit) => {
       const items = kit.querySelectorAll(".item");
+      const title = kit.querySelector(".kit-title");
 
       gsap.fromTo(
-        items,
-        { opacity: 0, y: 40, scale: 0.9 },
+        [title, ...items],
+        { opacity: 0, y: 100 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
+          ease: "power2.out",
+          stagger: 0.15,
           scrollTrigger: {
             trigger: kit,
-            start: "top 60%",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        kit.querySelector(".kit-title"),
-        { opacity: 0, x: -80 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          delay: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: kit,
-            start: "top 70%",
+            start: "top 90%",
+            end: "top 30%",
+            scrub: true,
           },
         }
       );
@@ -101,11 +103,14 @@ export default function WhatInMyBag() {
       ref={sectionRef}
       className="w-full z-50 py-24 px-6 bg-[#f8fafc] text-gray-800"
     >
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">
+      <h2
+        ref={titleRef}
+        className="text-4xl md:text-5xl font-bold text-center mb-20"
+      >
         What’s In My Bag?
       </h2>
 
-      <div className="flex flex-col gap-24 max-w-6xl mx-auto">
+      <div className="flex flex-col gap-32 max-w-6xl mx-auto">
         {kits.map((kit, index) => (
           <div
             key={index}

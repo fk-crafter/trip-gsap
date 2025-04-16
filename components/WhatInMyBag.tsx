@@ -58,7 +58,7 @@ export default function WhatInMyBag() {
   useGSAP(() => {
     const kitSections = sectionRef.current?.querySelectorAll(".kit");
 
-    kitSections?.forEach((kit, i) => {
+    kitSections?.forEach((kit) => {
       const items = kit.querySelectorAll(".item");
 
       gsap.fromTo(

@@ -9,8 +9,6 @@ import { ChevronDown } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const COLUMN_COUNT = 4;
-
 const images = [
   {
     src: "/img/tokyo-cross.jpg",

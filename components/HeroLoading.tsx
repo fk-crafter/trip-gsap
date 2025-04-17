@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
 
 type Props = {
   onComplete?: () => void;
@@ -16,10 +17,11 @@ export default function HeroLoading({ onComplete }: Props) {
 
   const rotations = useRef<number[]>([]);
 
-  useEffect(() => {
+  useGSAP(() => {
     const tl = gsap.timeline();
     const countObj = { value: 0 };
 
+    // Stack d’images animées (à la place du logo)
     stackRef.current.forEach((el, i) => {
       const angle = gsap.utils.random(-6, 6);
       rotations.current[i] = angle;
@@ -44,6 +46,7 @@ export default function HeroLoading({ onComplete }: Props) {
       );
     });
 
+    // Texte + compteur
     gsap.to([counterRef.current, loadingTextRef.current], {
       opacity: 1,
       y: 0,
@@ -52,49 +55,50 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.2,
     });
 
+    gsap.to(loadingTextRef.current, {
+      opacity: 0.5,
+      scale: 1.03,
+      yoyo: true,
+      repeat: -1,
+      duration: 1.8,
+      ease: "sine.inOut",
+    });
+
     gsap.to(countObj, {
       value: 100,
-      duration: 4.5,
+      duration: 3.5,
       ease: "power1.inOut",
       onUpdate: () => {
         if (counterRef.current) {
           counterRef.current.textContent = `${Math.round(countObj.value)}%`;
         }
       },
+      delay: 0.6,
     });
 
-    tl.to({}, { duration: 1.5 });
-
-    tl.to(
-      stackRef.current[3],
-      {
-        scale: 2,
-        duration: 1.8,
-        ease: "power4.inOut",
-      },
-      "+=0.2"
-    );
-
+    // Fin : exit
     tl.to(
       curtainRef.current,
       {
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.inOut",
+        xPercent: 100,
+        duration: 3,
+        ease: "power4.inOut",
+        delay: 0.4,
         onComplete: () => {
           if (onComplete) onComplete();
         },
       },
-      "-=1"
+      "+=1"
     );
   }, [onComplete]);
 
   return (
     <div
       ref={curtainRef}
-      className="fixed inset-0 bg-black z-[999] flex flex-col justify-center items-center"
+      className="absolute inset-0 bg-black/80 z-50 flex flex-col justify-center items-center backdrop-blur-xs"
     >
-      <div className="relative w-[420px] h-[260px] mb-6">
+      {/* ✅ Stack d’images à la place du logo */}
+      <div className="relative w-[320px] h-[210px] mb-4">
         {["kyoto.jpg", "kyoto.jpg", "kyoto.jpg", "thumbnail.png"].map(
           (src, i) => (
             <div
@@ -117,6 +121,7 @@ export default function HeroLoading({ onComplete }: Props) {
         )}
       </div>
 
+      {/* 🔢 Compteur */}
       <div className="relative w-[320px] flex items-center justify-center mb-2">
         <span
           ref={counterRef}
@@ -126,6 +131,7 @@ export default function HeroLoading({ onComplete }: Props) {
         </span>
       </div>
 
+      {/* ⏳ Texte */}
       <p
         ref={loadingTextRef}
         className="text-white text-lg tracking-wider font-bold mt-2 uppercase opacity-0 translate-y-10"

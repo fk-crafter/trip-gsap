@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
@@ -21,7 +21,6 @@ export default function HeroLoading({ onComplete }: Props) {
     const tl = gsap.timeline();
     const countObj = { value: 0 };
 
-    // Stack d’images animées (à la place du logo)
     stackRef.current.forEach((el, i) => {
       const angle = gsap.utils.random(-6, 6);
       rotations.current[i] = angle;
@@ -46,7 +45,6 @@ export default function HeroLoading({ onComplete }: Props) {
       );
     });
 
-    // Texte + compteur
     gsap.to([counterRef.current, loadingTextRef.current], {
       opacity: 1,
       y: 0,
@@ -76,7 +74,6 @@ export default function HeroLoading({ onComplete }: Props) {
       delay: 0.6,
     });
 
-    // Fin : exit
     tl.to(
       curtainRef.current,
       {
@@ -97,7 +94,6 @@ export default function HeroLoading({ onComplete }: Props) {
       ref={curtainRef}
       className="absolute inset-0 bg-black/80 z-50 flex flex-col justify-center items-center backdrop-blur-xs"
     >
-      {/* ✅ Stack d’images à la place du logo */}
       <div className="relative w-[320px] h-[210px] mb-4">
         {["kyoto.jpg", "kyoto.jpg", "kyoto.jpg", "thumbnail.png"].map(
           (src, i) => (
@@ -121,7 +117,6 @@ export default function HeroLoading({ onComplete }: Props) {
         )}
       </div>
 
-      {/* 🔢 Compteur */}
       <div className="relative w-[320px] flex items-center justify-center mb-2">
         <span
           ref={counterRef}
@@ -131,7 +126,6 @@ export default function HeroLoading({ onComplete }: Props) {
         </span>
       </div>
 
-      {/* ⏳ Texte */}
       <p
         ref={loadingTextRef}
         className="text-white text-lg tracking-wider font-bold mt-2 uppercase opacity-0 translate-y-10"

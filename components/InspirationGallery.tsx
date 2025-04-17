@@ -25,7 +25,6 @@ const images = [
     alt: "Food stalls in Osaka",
     label: "Food - Japan (Osaka)",
   },
-
   {
     src: "/img/swiss-zurich.jpg",
     alt: "Cityscape in Zurich",
@@ -67,7 +66,6 @@ const images = [
     alt: "Street food in Toronto",
     label: "Food - Canada (Toronto)",
   },
-
   {
     src: "/img/maldives-bungalow.jpg",
     alt: "Overwater bungalow",
@@ -83,7 +81,6 @@ const images = [
     alt: "Sunset on the beach",
     label: "View - Maldives",
   },
-
   {
     src: "/img/borabora-lagoon.jpg",
     alt: "Lagoon view",
@@ -99,7 +96,6 @@ const images = [
     alt: "Traditional hut",
     label: "Culture - Bora Bora",
   },
-
   {
     src: "/img/tulum-beach.jpg",
     alt: "Beach in Tulum",
@@ -111,15 +107,12 @@ const images = [
     alt: "Street food in Tulum",
     label: "Food - Tulum",
   },
-
   {
     src: "/img/bali-rice.jpg",
     alt: "Rice fields in Ubud",
     label: "Nature - Bali (Ubud)",
   },
-
   { src: "/img/bali-beach.jpg", alt: "Beach at sunset", label: "Relax - Bali" },
-
   {
     src: "/img/time-square.jpg",
     alt: "Times Square",
@@ -147,7 +140,6 @@ const images = [
     label: "Culture - Paris",
   },
   { src: "/img/paris-bakery.jpg", alt: "French bakery", label: "Food - Paris" },
-
   {
     src: "/img/sydney-opera.jpg",
     alt: "Opera House",
@@ -159,7 +151,6 @@ const images = [
     label: "View - Sydney",
   },
   { src: "/img/sydney-beach.jpg", alt: "Bondi Beach", label: "Relax - Sydney" },
-
   {
     src: "/img/marrakesh-souk.jpg",
     alt: "Souk in Marrakech",
@@ -175,7 +166,6 @@ const images = [
     alt: "Moroccan Food",
     label: "Food - Morocco (Casablanca)",
   },
-
   {
     src: "/img/chile-atacama.jpg",
     alt: "Atacama Desert",
@@ -191,7 +181,6 @@ const images = [
     alt: "Patagonian mountains",
     label: "Hiking - Chile (Patagonia)",
   },
-
   { src: "/img/jordan-petra.jpg", alt: "Petra", label: "Wonder - Jordan" },
   {
     src: "/img/jordan-desert.jpg",
@@ -203,7 +192,6 @@ const images = [
     alt: "Streets of Amman",
     label: "City - Jordan (Amman)",
   },
-
   {
     src: "/img/california-coast.jpg",
     alt: "Highway 1 coast",
@@ -231,26 +219,40 @@ export default function InspirationGallery() {
     const title = containerRef.current.querySelector(".gallery-title");
     const items = containerRef.current.querySelectorAll(".media-item");
 
-    gsap.set(title, { opacity: 0 });
-    gsap.set(items, { opacity: 0 });
+    gsap.set(title, { opacity: 0, y: 40 });
+
+    gsap.set(items, {
+      opacity: 0,
+      y: 60,
+      scale: 0.95,
+      rotate: () => gsap.utils.random(-8, 8),
+      clipPath: "inset(20% 20% 20% 20% round 20px)",
+      filter: "blur(10px)",
+    });
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top 40%",
+      start: "top 70%",
       once: true,
       onEnter: () => {
         gsap.to(title, {
           opacity: 1,
-          duration: 1,
-          ease: "power1.out",
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
         });
 
         gsap.to(items, {
           opacity: 1,
-          duration: 1.2,
-          ease: "power1.out",
+          y: 0,
+          scale: 1,
+          rotate: 0,
+          clipPath: "inset(0% 0% 0% 0% round 16px)",
+          filter: "blur(0px)",
+          duration: 1.6,
+          ease: "power4.out",
           stagger: {
-            each: 0.1,
+            each: 0.12,
             from: "start",
           },
         });
@@ -261,59 +263,71 @@ export default function InspirationGallery() {
   useEffect(() => {
     if (showAll && containerRef.current) {
       const allItems = containerRef.current.querySelectorAll(".media-item");
-      const newItems = Array.from(allItems).slice(12);
+      const newItems = Array.from(allItems).slice(6);
 
-      gsap.set(newItems, { opacity: 0 });
+      gsap.set(newItems, {
+        opacity: 0,
+        y: 40,
+        scale: 0.95,
+        rotate: () => gsap.utils.random(-8, 8),
+        clipPath: "inset(20% 20% 20% 20% round 20px)",
+        filter: "blur(10px)",
+      });
 
       gsap.to(newItems, {
         opacity: 1,
-        duration: 1,
-        ease: "power1.out",
+        y: 0,
+        scale: 1,
+        rotate: 0,
+        clipPath: "inset(0% 0% 0% 0% round 16px)",
+        filter: "blur(0px)",
+        duration: 1.2,
+        ease: "power3.out",
         stagger: {
-          each: 0.1,
+          each: 0.12,
           from: "start",
         },
       });
     }
   }, [showAll]);
 
-  const visibleImages = showAll ? images : images.slice(0, 12);
+  const visibleImages = showAll ? images : images.slice(0, 6);
 
   return (
-    <section className="relative z-50 py-20 px-4 bg-gray-50" ref={containerRef}>
-      <h2 className="gallery-title text-5xl font-semibold text-center mb-16 text-gray-800 tracking-tight">
+    <section
+      ref={containerRef}
+      className="relative z-50 py-24 px-4 bg-gray-50 overflow-hidden"
+    >
+      <h2 className="gallery-title text-5xl font-semibold text-center mb-20 text-gray-800 tracking-tight">
         Moments of the World
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {visibleImages.map((img, index) => (
           <div
             key={index}
-            className="media-item w-64 h-44 relative rounded-2xl overflow-hidden transition-transform duration-500 ease-in-out hover:scale-105 group bg-white shadow-sm"
-            style={{
-              transform: "none",
-              willChange: "opacity",
-            }}
+            className="media-item relative rounded-2xl overflow-hidden group bg-white shadow-md"
           >
             <Image
               src={img.src}
               alt={img.alt}
-              className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-75"
-              fill
+              className="w-full h-60 object-cover transition-all duration-700 group-hover:scale-105"
+              width={400}
+              height={240}
               loading="lazy"
             />
-            <div className="absolute bottom-0 left-0 w-full bg-black/70 text-white text-sm p-2 px-3 group-hover:bg-black/50 backdrop-blur-sm">
+            <div className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-sm p-3 group-hover:bg-black/40 transition-colors backdrop-blur-sm">
               {img.label}
             </div>
           </div>
         ))}
       </div>
 
-      {images.length > 12 && (
-        <div className="flex justify-center mt-12">
-          <span
+      {images.length > 6 && (
+        <div className="flex justify-center mt-16">
+          <button
             onClick={() => setShowAll((prev) => !prev)}
-            className="inline-flex items-center gap-2 text-base text-gray-700 cursor-pointer hover:text-black transition-colors group"
+            className="flex items-center gap-2 text-base font-medium text-gray-700 hover:text-black transition group"
           >
             {showAll ? "Show less" : "See more"}
             <ChevronDown
@@ -322,7 +336,7 @@ export default function InspirationGallery() {
               }`}
               size={20}
             />
-          </span>
+          </button>
         </div>
       )}
     </section>

@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "General Sans";
-  src: url("/fonts/GeneralSans-Extralight.woff") format("woff");
+  font-family: "Canela Text";
+  src: url("/fonts/CanelaText-Regular.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Broaek-Outline";
+  src: url("/fonts/Broaek-Outline.ttf") format("ttf");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 * {
-  font-family: "General Sans";
+  font-family: "Canela Text";
+}
+
+.title-font {
+  font-family: "Broaek-Outline", sans-serif;
 }
 
 body {
   background-color: #f9f9f9;
   overflow-x: hidden;
-}
-
-.title-font {
-  font-family: "Broaek-Outline", sans-serif;
 }
 
 @theme {

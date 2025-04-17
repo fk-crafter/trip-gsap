@@ -111,7 +111,7 @@ export default function HeroSection() {
         <div className="relative z-20 px-6">
           <h1
             ref={titleRef}
-            className="text-5xl md:text-7xl font-extrabold uppercase"
+            className="title-font text-5xl md:text-7xl font-extrabold uppercase"
           >
             Explore The World
           </h1>
@@ -121,7 +121,7 @@ export default function HeroSection() {
           />
           <p
             ref={subtitleRef}
-            className="mt-4 text-lg md:text-xl max-w-3xl text-white bg-black/20 px-4 py-2 rounded-md backdrop-blur-sm shadow-md"
+            className="title-font mt-4 text-lg md:text-xl max-w-3xl text-white bg-black/20 px-4 py-2 rounded-md backdrop-blur-sm shadow-md"
           >
             Discover breathtaking landscapes, immerse yourself in diverse
             cultures, and create unforgettable memories.
@@ -134,7 +134,7 @@ export default function HeroSection() {
               (label, index) => (
                 <button
                   key={index}
-                  className="px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border bg-black/50 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
+                  className="title-font px-6 py-3 cursor-pointer uppercase text-sm tracking-wider text-white border bg-black/50 rounded-md transition-all duration-300 backdrop-blur-sm hover:bg-white/20"
                 >
                   {label}
                 </button>

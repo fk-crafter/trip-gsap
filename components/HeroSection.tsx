@@ -95,7 +95,7 @@ export default function HeroSection() {
         muted
         playsInline
       >
-        <source src="/video/bg.mp4" type="video/mp4" />
+        <source src="/video/bg-small.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-black/40 z-1" />

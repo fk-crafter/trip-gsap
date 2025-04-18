@@ -95,7 +95,7 @@ export default function HeroLoading({ onComplete }: Props) {
       className="absolute inset-0 bg-black/80 z-50 flex flex-col justify-center items-center backdrop-blur-xs"
     >
       <div className="relative w-[320px] h-[210px] mb-4">
-        {["kyoto.jpg", "kyoto.jpg", "kyoto.jpg", "thumbnail.png"].map(
+        {["/mountain.jpg", "/city-night.jpg", "/beach.jpg", "/desert.jpg"].map(
           (src, i) => (
             <div
               key={i}
@@ -107,7 +107,7 @@ export default function HeroLoading({ onComplete }: Props) {
               className="absolute inset-0"
             >
               <Image
-                src={`/img/${src}`}
+                src={`/img/loading${src}`}
                 alt={`Image ${i}`}
                 fill
                 className="object-cover rounded-lg shadow-2xl"

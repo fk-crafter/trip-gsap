@@ -29,7 +29,6 @@ export default function StorySection() {
       end: () => `+=${scrollableRef.current!.scrollHeight}`,
       pin: leftRef.current,
       pinSpacing: false,
-      scrub: false,
     });
 
     ScrollTrigger.create({
@@ -38,11 +37,10 @@ export default function StorySection() {
       end: () => `+=${scrollableRef.current!.scrollHeight}`,
       pin: rightRef.current,
       pinSpacing: false,
-      scrub: false,
     });
 
     gsap.to(scrollableRef.current, {
-      yPercent: -105,
+      yPercent: -100,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -58,29 +56,28 @@ export default function StorySection() {
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 1,
+        ease: "power4.out",
         scrollTrigger: {
           trigger: leftRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
+          start: "top 80%",
         },
       }
     );
 
-    itemRefs.current.forEach((item, index) => {
+    itemRefs.current.forEach((item) => {
       gsap.fromTo(
         item,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 60, scale: 0.95 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          delay: index * 0.2,
+          scale: 1,
+          duration: 1,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: item,
             start: "top 90%",
-            toggleActions: "play none none reverse",
           },
         }
       );

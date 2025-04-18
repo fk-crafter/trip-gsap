@@ -40,8 +40,20 @@ export default function HeroSection() {
       x: -1150,
       duration: 1.2,
       ease: "power4.out",
-      delay: 5.8,
+      delay: 7,
     });
+
+    gsap.fromTo(
+      lineRef.current,
+      { opacity: 0, width: 0 },
+      {
+        opacity: 1,
+        width: "100%",
+        duration: 1.2,
+        ease: "power4.out",
+        delay: 7.5,
+      }
+    );
 
     gsap.fromTo(
       subtitleRef.current,
@@ -51,7 +63,7 @@ export default function HeroSection() {
         x: 0,
         duration: 1.2,
         ease: "power4.out",
-        delay: 6.2,
+        delay: 7.2,
       }
     );
 
@@ -63,19 +75,7 @@ export default function HeroSection() {
         scale: 1,
         duration: 1.2,
         ease: "power4.out",
-        delay: 6.5,
-      }
-    );
-
-    gsap.fromTo(
-      lineRef.current,
-      { opacity: 0, width: 0 },
-      {
-        opacity: 1,
-        width: "100%",
-        duration: 1.2,
-        ease: "power4.out",
-        delay: 6.4,
+        delay: 7.7,
       }
     );
   }, []);

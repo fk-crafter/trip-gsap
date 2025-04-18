@@ -108,7 +108,7 @@ export default function StorySection() {
           ref={rightRef}
           className="relative h-[290vh] overflow-hidden rounded-lg p-6"
         >
-          <div ref={scrollableRef} className="space-y-48">
+          <div ref={scrollableRef} className="space-y-48 pb-5">
             {[
               {
                 title: "1. Broadens Perspective",

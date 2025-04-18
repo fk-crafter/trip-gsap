@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,56 +8,53 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function GalleryTitle() {
-  const textRef = useRef(null);
-  const grainRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
 
-  useGSAP(() => {
-    gsap.fromTo(
-      textRef.current,
-      { opacity: 0, y: 100 },
-      {
-        opacity: 1,
-        y: 0,
-        ease: "power4.out",
-        duration: 1.2,
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+  useEffect(() => {
+    if (!textRef.current) return;
 
-    gsap.fromTo(
-      grainRef.current,
-      { opacity: 0 },
-      {
-        opacity: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 90%",
-          end: "top 40%",
-          scrub: true,
+    const words = textRef.current.querySelectorAll("span");
+
+    words.forEach((word, i) => {
+      gsap.fromTo(
+        word,
+        {
+          opacity: 0,
+          y: 40,
+          filter: "blur(6px)",
         },
-      }
-    );
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: word,
+            start: `top+=${100 + i * 20} bottom-=20`, // progressif
+            end: "top center",
+            scrub: true,
+          },
+        }
+      );
+    });
   }, []);
+
+  const text =
+    "The World Through Your Eyes Traveling is more than just visiting places — it's a powerful way to grow as a person.";
 
   return (
     <div className="relative w-full h-screen flex flex-col items-center justify-center py-32 overflow-hidden z-50">
-      <div
-        ref={grainRef}
-        className="absolute inset-0 pointer-events-none z-0 opacity-0 "
-      />
-      <div ref={textRef} className="relative z-10 text-center">
-        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wider text-black">
-          The World Through Your Eyes
-        </h2>
-        <p className="text-gray-400">
-          Traveling is more than just visiting places — it&apos;s a powerful way
-          to grow as a person.
-        </p>
+      <div className="relative z-10 text-center max-w-4xl px-4">
+        <div
+          ref={textRef}
+          className="text-4xl md:text-6xl font-bold uppercase tracking-wide text-black leading-snug"
+        >
+          {text.split(" ").map((word, i) => (
+            <span key={i} className="inline-block mx-1 whitespace-nowrap">
+              {word}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

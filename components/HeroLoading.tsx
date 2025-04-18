@@ -38,10 +38,10 @@ export default function HeroLoading({ onComplete }: Props) {
           y: 0,
           opacity: 1,
           rotate: angle,
-          duration: 1.6, // ⬅️ augmenté (avant 1)
+          duration: 1.6,
           ease: "back.out(1.7)",
         },
-        i * 0.8 // ⬅️ plus d'espace entre chaque apparition (avant 0.6)
+        i * 0.8
       );
     });
 

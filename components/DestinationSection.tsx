@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Destination = {
   title: string;
@@ -20,6 +24,7 @@ type Props = {
   gradient: string;
   destinations: Destination[];
   enableHoverPreview?: boolean;
+  overlayColor: string;
 };
 
 export default function DestinationSection({
@@ -31,10 +36,35 @@ export default function DestinationSection({
   gradient,
   destinations,
   enableHoverPreview = false,
+  overlayColor,
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
   const [showPreview, setShowPreview] = useState(false);
+  const overlayRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    overlayRefs.current.forEach((overlay, i) => {
+      if (!overlay) return;
+
+      gsap.fromTo(
+        overlay,
+        { y: 0 },
+        {
+          y: "-100%",
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: overlay,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+  }, [isOpen]);
 
   return (
     <section
@@ -122,6 +152,14 @@ export default function DestinationSection({
                   loop
                   muted
                   playsInline
+                />
+
+                <div
+                  ref={(el) => {
+                    if (el) overlayRefs.current[index] = el;
+                  }}
+                  className="absolute inset-0 z-20"
+                  style={{ backgroundColor: overlayColor }}
                 />
               </div>
 

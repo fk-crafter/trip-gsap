@@ -38,6 +38,7 @@ export default function DesertSection() {
       textColor="text-[#4b1e08]/70"
       borderColor="border-white/10"
       gradient="from-[#f7d199] via-[#f3b36b] to-[#d87c3a]"
+      overlayColor="#f7d199"
       destinations={desertDestinations}
       enableHoverPreview={true}
     />

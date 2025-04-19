@@ -38,6 +38,7 @@ export default function CitySection() {
       textColor="text-purple-200"
       borderColor="border-white/10"
       gradient="from-[#0f0c29] via-[#302b63] to-[#24243e]"
+      overlayColor="#0f0c29"
       destinations={cityDestinations}
       enableHoverPreview={true}
     />

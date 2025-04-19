@@ -38,6 +38,7 @@ export default function OceanSection() {
       textColor="text-sky-600"
       borderColor="border-gray-300"
       gradient="from-[#d4f1f9] to-[#fff5e1]"
+      overlayColor="#d4f1f9"
       destinations={oceanDestinations}
       enableHoverPreview={true}
     />

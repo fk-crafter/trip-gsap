@@ -43,7 +43,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <section className="min-h-[250vh] pt-72 relative z-50 flex flex-col items-center justify-center gap-20 text-black overflow-hidden">
+    <section className="min-h-[250vh] pt-72 relative z-50 flex flex-col items-center justify-center gap-20 text-black overflow-hidden ">
       {[Image1, Image2, Image3].map((img, index) => (
         <div
           key={index}

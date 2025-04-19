@@ -38,6 +38,7 @@ export default function NatureSection() {
       textColor="text-gray-600"
       borderColor="border-gray-300"
       gradient="from-[#e3f2f1] to-[#fef9f3]"
+      overlayColor="#e3f2f1"
       destinations={natureDestinations}
       enableHoverPreview={true}
     />

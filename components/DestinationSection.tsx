@@ -46,7 +46,7 @@ export default function DestinationSection({
   useEffect(() => {
     if (!isOpen) return;
 
-    overlayRefs.current.forEach((overlay, i) => {
+    overlayRefs.current.forEach((overlay) => {
       if (!overlay) return;
 
       gsap.fromTo(

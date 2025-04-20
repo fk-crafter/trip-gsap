@@ -8,6 +8,7 @@ import NatureSection from "@/components/NatureSection";
 import OceanSection from "@/components/OceanSection";
 import CitySection from "@/components/CitySection";
 import DesertSection from "@/components/DesertSection";
+import SponsorsSection from "@/components/SponsorsSection";
 import PlaneRevealSection from "@/components/PlaneRevealSection";
 import FlightIntro from "@/components/FlightIntro";
 import ChoiceSection from "@/components/ChoiceSection";
@@ -34,6 +35,7 @@ export default function Home() {
       <OceanSection />
       <CitySection />
       <DesertSection />
+      <SponsorsSection />
       <ChoiceSection />
       <WorldMap />
       <BreakSection />

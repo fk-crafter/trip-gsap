@@ -35,13 +35,13 @@ export default function Home() {
       <OceanSection />
       <CitySection />
       <DesertSection />
-      <SponsorsSection />
       <ChoiceSection />
       <WorldMap />
       <BreakSection />
       <InspirationGallery />
       <WhatInMyBag />
       <ReflectionsSection />
+      <SponsorsSection />
       <TravelTips />
       <Footer />
     </div>

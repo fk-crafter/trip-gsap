@@ -1,40 +1,73 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const sponsors = [
   { name: "Airbnb", logo: "/img/sponsor/airbnb.png" },
-  { name: "Emirates", logo: "/img/sponsor/airbnb.png" },
-  { name: "Expedia", logo: "/img/sponsor/airbnb.png" },
-  { name: "National Geographic", logo: "/img/sponsor/airbnb.png" },
-  { name: "Lonely Planet", logo: "/img/sponsor/airbnb.png" },
-  { name: "TripAdvisor", logo: "/img/sponsor/airbnb.png" },
-  { name: "Booking", logo: "/img/sponsor/airbnb.png" },
-  { name: "Qatar Airways", logo: "/img/sponsor/airbnb.png" },
-  { name: "Skyscanner", logo: "/img/sponsor/airbnb.png" },
-  { name: "Google Travel", logo: "/img/sponsor/airbnb.png" },
-  { name: "Delta", logo: "/img/sponsor/airbnb.png" },
-  { name: "Kayak", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
-  { name: "Hilton", logo: "/img/sponsor/airbnb.png" },
+  { name: "Emirates", logo: "/img/sponsor/emirates.png" },
+  { name: "Expedia", logo: "/img/sponsor/expedia.png" },
+  { name: "National Geographic", logo: "/img/sponsor/national-g.png" },
+  { name: "Lonely Planet", logo: "/img/sponsor/lonely-p.png" },
+  { name: "TripAdvisor", logo: "/img/sponsor/tripadvisor.png" },
+  { name: "Booking", logo: "/img/sponsor/booking.png" },
+  { name: "Qatar Airways", logo: "/img/sponsor/qatar-air.png" },
+  { name: "Skyscanner", logo: "/img/sponsor/skyscanner.png" },
+  { name: "Google Travel", logo: "/img/sponsor/google-travel.png" },
+  { name: "Delta", logo: "/img/sponsor/delta.png" },
+  { name: "Kayak", logo: "/img/sponsor/kayak.png" },
+  { name: "Hilton", logo: "/img/sponsor/hilton.png" },
+
+  { name: "Marriott", logo: "/img/sponsor/marriott.png" },
+  { name: "Trivago", logo: "/img/sponsor/trivago.png" },
+  { name: "Etihad Airways", logo: "/img/sponsor/etihad.png" },
+  { name: "Turkish Airlines", logo: "/img/sponsor/turkish-air.png" },
+  { name: "KLM", logo: "/img/sponsor/klm.png" },
+  { name: "Hertz", logo: "/img/sponsor/hertz.png" },
+  { name: "Avis", logo: "/img/sponsor/avis.png" },
+  { name: "Europcar", logo: "/img/sponsor/europcar.png" },
+  { name: "Hostelworld", logo: "/img/sponsor/hostelworld.png" },
+  { name: "TUI", logo: "/img/sponsor/tui.png" },
+  { name: "Air France", logo: "/img/sponsor/air-france.png" },
+  { name: "JetBlue", logo: "/img/sponsor/jetblue.png" },
+  { name: "EasyJet", logo: "/img/sponsor/easyjet.png" },
 ];
 
 export default function SponsorsSection() {
   const [isOpen, setIsOpen] = useState(false);
+  const logoRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useGSAP(() => {
+    logoRefs.current.forEach((el, i) => {
+      if (!el) return;
+
+      gsap.fromTo(
+        el,
+        {
+          rotateX: -90,
+          opacity: 0,
+          transformOrigin: "center",
+        },
+        {
+          rotateX: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  }, []);
 
   return (
     <section className="bg-white py-20 relative z-50">
@@ -44,14 +77,14 @@ export default function SponsorsSection() {
         </h2>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto px-6">
+      <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto px-6 perspective-1000">
         {sponsors.slice(0, isOpen ? sponsors.length : 8).map((sponsor, i) => (
-          <motion.div
+          <div
             key={i}
-            className="w-28 h-16 grayscale hover:grayscale-0 transition-all duration-300 flex items-center justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
+            ref={(el) => {
+              logoRefs.current[i] = el;
+            }}
+            className="w-28 h-16 grayscale hover:grayscale-0 transition-all duration-300 flex items-center justify-center [transform-style:preserve-3d]"
           >
             <Image
               src={sponsor.logo}
@@ -60,7 +93,7 @@ export default function SponsorsSection() {
               height={60}
               className="object-contain w-full h-auto"
             />
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -71,8 +104,8 @@ export default function SponsorsSection() {
         >
           {isOpen ? "Show Less" : "Show All"}
           <ChevronDown
-            className={`transition-transform ${
-              isOpen ? "rotate-180" : "rotate-0"
+            className={`transition-transform duration-500 ${
+              isOpen ? "rotate-180" : ""
             }`}
           />
         </button>

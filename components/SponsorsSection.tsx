@@ -1,13 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const sponsors = [
   { name: "Airbnb", logo: "/img/sponsor/airbnb.png" },
@@ -40,34 +35,18 @@ const sponsors = [
 
 export default function SponsorsSection() {
   const [isOpen, setIsOpen] = useState(false);
-  const logoRefs = useRef<(HTMLDivElement | null)[]>([]);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [maxHeight, setMaxHeight] = useState("0px");
 
-  useGSAP(() => {
-    logoRefs.current.forEach((el, i) => {
-      if (!el) return;
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
 
-      gsap.fromTo(
-        el,
-        {
-          rotateX: -90,
-          opacity: 0,
-          transformOrigin: "center",
-        },
-        {
-          rotateX: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    });
-  }, []);
+    const fullHeight = content.scrollHeight;
+    const visibleRows = content.children[0]?.clientHeight || 0;
+    const approxFirstTwoLines = visibleRows * 0.3 + 48;
+    setMaxHeight(isOpen ? `${fullHeight}px` : `${approxFirstTwoLines}px`);
+  }, [isOpen]);
 
   return (
     <section className="bg-white py-20 relative z-50">
@@ -78,19 +57,16 @@ export default function SponsorsSection() {
       </div>
 
       <div
-        ref={contentRef}
-        className="overflow-hidden transition-[max-height] duration-700 ease-in-out"
-        style={{
-          maxHeight: isOpen ? "1000px" : "250px",
-        }}
+        className="overflow-hidden transition-all duration-700 ease-in-out"
+        style={{ maxHeight }}
       >
-        <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto px-6 perspective-1000">
-          {sponsors.slice(0, isOpen ? sponsors.length : 8).map((sponsor, i) => (
+        <div
+          ref={contentRef}
+          className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto px-6 perspective-1000"
+        >
+          {sponsors.map((sponsor, i) => (
             <div
               key={i}
-              ref={(el) => {
-                logoRefs.current[i] = el;
-              }}
               className="w-28 h-16 grayscale hover:grayscale-0 transition-all duration-300 flex items-center justify-center [transform-style:preserve-3d]"
             >
               <Image
@@ -107,7 +83,7 @@ export default function SponsorsSection() {
 
       <div className="flex justify-center mt-10">
         <button
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => setIsOpen(!isOpen)}
           className="flex items-center gap-2 text-gray-700 hover:text-black transition-all"
         >
           {isOpen ? "Show Less" : "Show All"}

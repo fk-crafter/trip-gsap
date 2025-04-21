@@ -3,6 +3,11 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const sponsors = [
   { name: "Airbnb", logo: "/img/sponsor/airbnb.png" },
@@ -37,6 +42,26 @@ export default function SponsorsSection() {
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [maxHeight, setMaxHeight] = useState("0px");
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!titleRef.current) return;
+
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 85%",
+        },
+      }
+    );
+  }, []);
 
   useEffect(() => {
     const content = contentRef.current;
@@ -44,13 +69,13 @@ export default function SponsorsSection() {
 
     const fullHeight = content.scrollHeight;
     const visibleRows = content.children[0]?.clientHeight || 0;
-    const approxFirstTwoLines = visibleRows * 0.3 + 48;
-    setMaxHeight(isOpen ? `${fullHeight}px` : `${approxFirstTwoLines}px`);
+    const approxFirstLine = visibleRows * 0.3 + 48;
+    setMaxHeight(isOpen ? `${fullHeight}px` : `${approxFirstLine}px`);
   }, [isOpen]);
 
   return (
     <section className="bg-white py-20 relative z-50">
-      <div className="text-center mb-10">
+      <div ref={titleRef} className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
           Our Trusted Travel Partners
         </h2>

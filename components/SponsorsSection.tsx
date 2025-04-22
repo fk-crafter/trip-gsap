@@ -109,9 +109,8 @@ export default function SponsorsSection() {
       <div className="flex justify-center mt-10">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2 text-gray-700 hover:text-black transition-all"
+          className="flex cursor-pointer items-center gap-2 text-gray-700 hover:text-black transition-all"
         >
-          {isOpen ? "Show Less" : "Show All"}
           <ChevronDown
             className={`transition-transform duration-500 ${
               isOpen ? "rotate-180" : ""

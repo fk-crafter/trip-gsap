@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -5,23 +8,50 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import Image from "next/image";
+import gsap from "gsap";
+
 export default function Footer() {
+  const linkRefs = useRef<HTMLAnchorElement[]>([]);
+
+  useEffect(() => {
+    linkRefs.current.forEach((link) => {
+      const underline = link.querySelector("span");
+      if (!underline) return;
+
+      link.addEventListener("mouseenter", () => {
+        gsap.to(underline, {
+          width: "100%",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+
+      link.addEventListener("mouseleave", () => {
+        gsap.to(underline, { width: "0%", duration: 0.3, ease: "power2.in" });
+      });
+    });
+  }, []);
+
+  const addLinkRef = (el: HTMLAnchorElement | null) => {
+    if (el && !linkRefs.current.includes(el)) {
+      linkRefs.current.push(el);
+    }
+  };
+
   return (
-    <footer className=" z-50 min-h-screen text-black px-10 py-16 flex flex-col justify-between">
+    <footer className="z-50 min-h-screen text-black px-10 py-16 flex flex-col justify-between">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
           <h2 className="text-5xl font-light mb-12">
             Trip’s over. See you next time.
           </h2>
-          <div className="flex items-center gap-4">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              className="h-56 w-auto"
-              width={200}
-              height={200}
-            />
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            className="h-56 w-auto"
+            width={200}
+            height={200}
+          />
         </div>
 
         <div className="flex flex-col items-start">
@@ -50,47 +80,41 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-20 mt-24 ml-40">
             <div>
               <h4 className="text-base font-bold mb-4 uppercase">Explore</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="hover:underline">
-                    Destinations
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Stories
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Guides
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Specials
-                  </a>
-                </li>
+              <ul className="space-y-2">
+                {["Destinations", "Stories", "Guides", "Specials"].map(
+                  (text, i) => (
+                    <li key={i}>
+                      <a
+                        href="#"
+                        ref={addLinkRef}
+                        className="relative inline-block group text-sm text-black"
+                      >
+                        {text}
+                        <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
+
             <div>
               <h4 className="text-base font-bold mb-4 uppercase">About</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="hover:underline">
-                    Our Mission
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Join the Community
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Press & Media
-                  </a>
-                </li>
+              <ul className="space-y-2">
+                {["Our Mission", "Join the Community", "Press & Media"].map(
+                  (text, i) => (
+                    <li key={i}>
+                      <a
+                        href="#"
+                        ref={addLinkRef}
+                        className="relative inline-block group text-sm text-black"
+                      >
+                        {text}
+                        <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>

@@ -275,7 +275,7 @@ export default function InspirationGallery() {
       <div className="flex justify-center mt-14">
         <button
           onClick={() => setShowAll((prev) => !prev)}
-          className="flex cursor-pointer items-center gap-2 text-gray-600 hover:text-black transition"
+          className="flex items-center gap-2 cursor-pointer text-gray-600 hover:text-black transition"
         >
           <ChevronDown
             className={`transition-transform duration-500 ${

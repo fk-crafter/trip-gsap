@@ -33,7 +33,7 @@ export default function SectionTransition() {
   return (
     <div
       ref={overlayRef}
-      className="w-full fixed bottom-0 left-0 z-20 pointer-events-none bg-white/10 backdrop-blur-md border border-white/20 rounded-md shadow-lg"
+      className="w-full fixed bottom-0 left-0 z-20 pointer-events-none bg-white rounded-md shadow-lg"
     />
   );
 }

@@ -43,9 +43,27 @@ export default function DestinationSection({
   const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
   const [showPreview, setShowPreview] = useState(false);
   const overlayRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     if (!isOpen) return;
+    if (!sectionRef.current) return;
+
+    gsap.fromTo(
+      sectionRef.current,
+      { opacity: 0, y: 80 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
 
     overlayRefs.current.forEach((overlay) => {
       if (!overlay) return;
@@ -69,6 +87,7 @@ export default function DestinationSection({
 
   return (
     <section
+      ref={sectionRef}
       className={`relative z-50 w-full bg-gradient-to-b ${gradient} text-gray-800 py-20 transition-all duration-700`}
       onMouseMove={(e) => {
         if (!enableHoverPreview || isOpen) return;

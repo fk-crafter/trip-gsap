@@ -41,8 +41,8 @@ export default function Home() {
       <InspirationGallery />
       <WhatInMyBag />
       <ReflectionsSection />
-      <SponsorsSection />
       <TravelTips />
+      <SponsorsSection />
       <Footer />
     </div>
   );

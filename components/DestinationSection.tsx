@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +44,7 @@ export default function DestinationSection({
   const [showPreview, setShowPreview] = useState(false);
   const overlayRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!isOpen) return;
 
     overlayRefs.current.forEach((overlay) => {

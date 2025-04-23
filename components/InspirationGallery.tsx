@@ -215,130 +215,75 @@ export default function InspirationGallery() {
 
   useGSAP(() => {
     if (!containerRef.current) return;
-
-    const title = containerRef.current.querySelector(".gallery-title");
     const items = containerRef.current.querySelectorAll(".media-item");
 
-    gsap.set(title, { opacity: 0, y: 40 });
+    gsap.set(items, { opacity: 0, y: 60, scale: 0.95 });
 
-    gsap.set(items, {
-      opacity: 0,
-      y: 60,
-      scale: 0.95,
-      rotate: () => gsap.utils.random(-8, 8),
-      clipPath: "inset(20% 20% 20% 20% round 20px)",
-      filter: "blur(10px)",
-    });
-
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 70%",
-      once: true,
-      onEnter: () => {
-        gsap.to(title, {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power3.out",
-        });
-
-        gsap.to(items, {
+    ScrollTrigger.batch(items, {
+      start: "top 85%",
+      onEnter: (batch) => {
+        gsap.to(batch, {
           opacity: 1,
           y: 0,
           scale: 1,
-          rotate: 0,
-          clipPath: "inset(0% 0% 0% 0% round 16px)",
-          filter: "blur(0px)",
-          duration: 1.6,
-          ease: "power4.out",
-          stagger: {
-            each: 0.12,
-            from: "start",
-          },
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.15,
         });
       },
     });
   }, []);
-
-  useEffect(() => {
-    if (showAll && containerRef.current) {
-      const allItems = containerRef.current.querySelectorAll(".media-item");
-      const newItems = Array.from(allItems).slice(6);
-
-      gsap.set(newItems, {
-        opacity: 0,
-        y: 40,
-        scale: 0.95,
-        rotate: () => gsap.utils.random(-8, 8),
-        clipPath: "inset(20% 20% 20% 20% round 20px)",
-        filter: "blur(10px)",
-      });
-
-      gsap.to(newItems, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        rotate: 0,
-        clipPath: "inset(0% 0% 0% 0% round 16px)",
-        filter: "blur(0px)",
-        duration: 1.2,
-        ease: "power3.out",
-        stagger: {
-          each: 0.12,
-          from: "start",
-        },
-      });
-    }
-  }, [showAll]);
 
   const visibleImages = showAll ? images : images.slice(0, 6);
 
   return (
     <section
       ref={containerRef}
-      className="relative z-50 py-24 px-4 bg-gray-50 overflow-hidden"
+      className="relative z-50 py-24 px-4 bg-[#f8f4f1] overflow-hidden"
     >
-      <h2 className="gallery-title text-5xl font-semibold text-center mb-20 text-gray-800 tracking-tight">
+      <h2 className="text-5xl font-semibold text-center mb-20 text-gray-800">
         Moments of the World
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {visibleImages.map((img, index) => (
-          <div
-            key={index}
-            className="media-item relative rounded-2xl overflow-hidden group bg-white shadow-md"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-60 object-cover transition-all duration-700 group-hover:scale-105"
-              width={400}
-              height={240}
-              loading="lazy"
-            />
-            <div className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-sm p-3 group-hover:bg-black/40 transition-colors backdrop-blur-sm">
-              {img.label}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto auto-rows-[200px] [grid-auto-flow:dense]">
+        {visibleImages.map((img, index) => {
+          const isTall = index % 5 === 0 || index % 7 === 0;
+          const isWide = index % 4 === 0;
+          const colSpan = isWide ? "col-span-2" : "";
+          const rowSpan = isTall ? "row-span-2" : "";
+
+          return (
+            <div
+              key={index}
+              className={`media-item group relative overflow-hidden rounded-xl shadow-md bg-white ${colSpan} ${rowSpan}`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                width={600}
+                height={400}
+              />
+              <div className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-xs p-2 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {img.label}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      {images.length > 6 && (
-        <div className="flex justify-center mt-16">
-          <button
-            onClick={() => setShowAll((prev) => !prev)}
-            className="flex items-center gap-2 text-base font-medium text-gray-700 hover:text-black transition group"
-          >
-            {showAll ? "Show less" : "See more"}
-            <ChevronDown
-              className={`transition-transform duration-500 group-hover:opacity-80 ${
-                showAll ? "rotate-180" : ""
-              }`}
-              size={20}
-            />
-          </button>
-        </div>
-      )}
+      <div className="flex justify-center mt-14">
+        <button
+          onClick={() => setShowAll((prev) => !prev)}
+          className="flex cursor-pointer items-center gap-2 text-gray-600 hover:text-black transition"
+        >
+          <ChevronDown
+            className={`transition-transform duration-500 ${
+              showAll ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+      </div>
     </section>
   );
 }

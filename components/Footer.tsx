@@ -124,14 +124,30 @@ export default function Footer() {
       <div className="mt-20 border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center text-xs">
         <div className="flex flex-wrap gap-4 text-center md:text-left">
           <span>Copyright © 2025 Wanderwise. All rights reserved.</span>
-          <a href="#" className="hover:underline">
+
+          {/* Privacy Policy */}
+          <a
+            href="#"
+            ref={addLinkRef}
+            className="relative inline-block group text-black"
+          >
             Privacy Policy
+            <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
           </a>
-          <a href="#" className="hover:underline">
+
+          {/* Terms of Service */}
+          <a
+            href="#"
+            ref={addLinkRef}
+            className="relative inline-block group text-black"
+          >
             Terms of Service
+            <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
           </a>
+
           <span>Crafted by HLABS</span>
         </div>
+
         <div className="flex gap-4 mt-4 md:mt-0 text-lg">
           <a href="#" aria-label="Facebook">
             <FaFacebookF />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -213,19 +213,31 @@ export default function InspirationGallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showAll, setShowAll] = useState(false);
 
+  // Animate first 6 on scroll
   useGSAP(() => {
     if (!containerRef.current) return;
-    const items = containerRef.current.querySelectorAll(".media-item");
 
-    gsap.set(items, { opacity: 0, y: 60, scale: 0.95 });
+    const initialItems = Array.from(
+      containerRef.current.querySelectorAll(".media-item")
+    ).slice(0, 6);
 
-    ScrollTrigger.batch(items, {
+    gsap.set(initialItems, {
+      opacity: 0,
+      y: 60,
+      scale: 0.95,
+      rotateX: 45,
+      transformPerspective: 1000,
+      transformOrigin: "center",
+    });
+
+    ScrollTrigger.batch(initialItems, {
       start: "top 85%",
       onEnter: (batch) => {
         gsap.to(batch, {
           opacity: 1,
           y: 0,
           scale: 1,
+          rotateX: 0,
           duration: 1,
           ease: "power3.out",
           stagger: 0.15,
@@ -233,6 +245,33 @@ export default function InspirationGallery() {
       },
     });
   }, []);
+
+  // Animate new items on toggle
+  useEffect(() => {
+    if (!showAll || !containerRef.current) return;
+
+    const allItems = containerRef.current.querySelectorAll(".media-item");
+    const newItems = Array.from(allItems).slice(6);
+
+    gsap.set(newItems, {
+      opacity: 0,
+      y: 60,
+      scale: 0.95,
+      rotateX: 45,
+      transformPerspective: 1000,
+      transformOrigin: "center",
+    });
+
+    gsap.to(newItems, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotateX: 0,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.15,
+    });
+  }, [showAll]);
 
   const visibleImages = showAll ? images : images.slice(0, 6);
 

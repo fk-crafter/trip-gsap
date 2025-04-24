@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import gsap from "gsap";
+import Link from "next/link";
 
 export default function Footer() {
   const linkRefs = useRef<HTMLAnchorElement[]>([]);
@@ -70,9 +71,9 @@ export default function Footer() {
             <p className="text-xs mt-4">
               Subscribe to get the latest travel stories, hidden gems, and
               destination highlights. By signing up, you agree to our{" "}
-              <a href="#" className="underline">
+              <Link href="#" className="underline">
                 Privacy Policy
-              </a>
+              </Link>
               .
             </p>
           </form>
@@ -84,14 +85,14 @@ export default function Footer() {
                 {["Destinations", "Stories", "Guides", "Specials"].map(
                   (text, i) => (
                     <li key={i}>
-                      <a
+                      <Link
                         href="#"
                         ref={addLinkRef}
                         className="relative inline-block group text-sm text-black"
                       >
                         {text}
                         <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
-                      </a>
+                      </Link>
                     </li>
                   )
                 )}
@@ -104,14 +105,14 @@ export default function Footer() {
                 {["Our Mission", "Join the Community", "Press & Media"].map(
                   (text, i) => (
                     <li key={i}>
-                      <a
+                      <Link
                         href="#"
                         ref={addLinkRef}
                         className="relative inline-block group text-sm text-black"
                       >
                         {text}
                         <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
-                      </a>
+                      </Link>
                     </li>
                   )
                 )}
@@ -125,42 +126,40 @@ export default function Footer() {
         <div className="flex flex-wrap gap-4 text-center md:text-left">
           <span>Copyright © 2025 Wanderwise. All rights reserved.</span>
 
-          {/* Privacy Policy */}
-          <a
+          <Link
             href="#"
             ref={addLinkRef}
             className="relative inline-block group text-black"
           >
             Privacy Policy
             <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
-          </a>
+          </Link>
 
-          {/* Terms of Service */}
-          <a
+          <Link
             href="#"
             ref={addLinkRef}
             className="relative inline-block group text-black"
           >
             Terms of Service
             <span className="absolute left-0 bottom-0 h-[2px] bg-black w-0" />
-          </a>
+          </Link>
 
           <span>Crafted by HLABS</span>
         </div>
 
         <div className="flex gap-4 mt-4 md:mt-0 text-lg">
-          <a href="#" aria-label="Facebook">
+          <Link href="#" aria-label="Facebook">
             <FaFacebookF />
-          </a>
-          <a href="#" aria-label="Instagram">
+          </Link>
+          <Link href="#" aria-label="Instagram">
             <FaInstagram />
-          </a>
-          <a href="#" aria-label="LinkedIn">
+          </Link>
+          <Link href="#" aria-label="LinkedIn">
             <FaLinkedinIn />
-          </a>
-          <a href="#" aria-label="YouTube">
+          </Link>
+          <Link href="#" aria-label="YouTube">
             <FaYoutube />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
